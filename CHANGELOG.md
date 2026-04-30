@@ -19,6 +19,7 @@ Estado del código y la documentación asociada al taller de **gestión de confi
 - **`CHANGELOG.md`**: este archivo.
 - **`docs/DEPLOY.md`**: guía breve de despliegue del front estático.
 - **`docs/DATABASE.md`**: nota sobre almacenamiento en esta línea base (sin motor SQL aún) y entidades previstas.
+- **Cierre documentación 4.6 AA2** (`dbc4069`): inclusión de `CHANGELOG.md`, `LICENSE.txt`, actualización del informe `Taller_LineaBase_SIGR.md` y `README.md` con enlaces a los nuevos documentos.
 
 ### Alcance no incluido en esta línea base
 
@@ -33,5 +34,6 @@ Estado del código y la documentación asociada al taller de **gestión de confi
 | `01e971a` | `01e971a72995c86a5dd03305efe145d91d26593f` | Initial commit |
 | `77c01bc` | `77c01bcecff75bd7680eed7225e7605866674b06` | Documentacion inicial |
 | `8974a80` | `8974a804216942e7dc129f5d3936247365efe9ae` | Front inicial |
+| `dbc4069` | `dbc4069a6a9d7dcbf9e8481187b4fec44430052d` | docs: CHANGELOG, LICENSE.txt, DEPLOY y DATABASE para línea base AA2 |
 
-> *El enunciado genérico del curso puede citar un hash de ejemplo distinto (`a93b4f1`); la referencia real del equipo es la tabla anterior.*
+> *El enunciado genérico del curso puede citar un hash de ejemplo distinto (`a93b4f1`); la referencia real del equipo es la tabla anterior (último: `dbc4069`).*
