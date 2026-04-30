@@ -6,6 +6,14 @@ Registro de cambios incluidos en la **línea base** del repositorio hasta el com
 
 Estado del código y la documentación asociada al taller de **gestión de configuración** (Unidad 2). Rama: `main`.
 
+### Añadido (módulos locales en `front/`)
+
+- **Sesión simulada** (`sigr_session_v1`): nombre y rol (cliente / mesero / administrador).
+- **Menú CRUD** (`sigr_menu_v1`): persistencia del menú editado; semilla `MENU_SEED` restorable.
+- **Pedidos con estados** y vista **Pedidos en vivo** (`sigr_orders_v1`): flujo pendiente → en preparación → listo → entregado.
+- **Reservas** (`sigr_reservations_v1`) y **caja / cierres** (`sigr_cash_closures_v1`).
+- Cabecera con **`.header-top`** y navegación por módulos; documentación alineada en `docs/DATABASE.md`, `docs/Taller_LineaBase_SIGR.md` (§4.2) y `README.md`.
+
 ### Añadido
 
 - **Repositorio inicial** (`01e971a`): proyecto `sigr` en GitHub con `README.md`, licencia **MIT** (`LICENSE`) y rama `main`.
@@ -24,7 +32,7 @@ Estado del código y la documentación asociada al taller de **gestión de confi
 
 ### Alcance no incluido en esta línea base
 
-- Backend, base de datos relacional, autenticación en servidor, reservas, caja y facturación (previstos como módulos futuros según el informe del taller).
+- Backend, base de datos relacional, autenticación segura en servidor, concurrencia, tiempo real en red y facturación electrónica (los módulos actuales son **solo demo en el navegador**).
 
 ---
 

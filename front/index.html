@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SIGR — Pedidos</title>
+  <title>SIGR — Gestión de restaurante</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
@@ -13,49 +13,208 @@
   <div class="app-bg" aria-hidden="true"></div>
 
   <header class="site-header">
-    <div class="brand">
-      <span class="brand-mark" aria-hidden="true">◆</span>
-      <div>
-        <h1 class="brand-title">SIGR</h1>
-        <p class="brand-tag">Pedidos en sala</p>
+    <div class="header-top">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">◆</span>
+        <div>
+          <h1 class="brand-title">SIGR</h1>
+          <p class="brand-tag" id="brand-subtitle">Gestión local (sin servidor)</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <span id="session-badge" class="session-badge hidden" aria-live="polite"></span>
+        <button
+          type="button"
+          class="cart-toggle"
+          id="cart-toggle"
+          aria-expanded="false"
+          aria-controls="cart-overlay"
+          title="Ver carrito"
+        >
+          <span class="visually-hidden">Abrir carrito del pedido</span>
+          <svg class="cart-toggle-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path
+              d="M6 6h15l-1.5 9h-12L6 6Zm0 0L5 3H2"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <circle cx="9" cy="20" r="1.5" fill="currentColor" />
+            <circle cx="17" cy="20" r="1.5" fill="currentColor" />
+          </svg>
+          <span class="cart-toggle-badge" id="cart-badge">0</span>
+        </button>
       </div>
     </div>
-    <button
-      type="button"
-      class="cart-toggle"
-      id="cart-toggle"
-      aria-expanded="false"
-      aria-controls="cart-overlay"
-      title="Ver carrito"
-    >
-      <span class="visually-hidden">Abrir carrito del pedido</span>
-      <svg class="cart-toggle-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path
-          d="M6 6h15l-1.5 9h-12L6 6Zm0 0L5 3H2"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <circle cx="9" cy="20" r="1.5" fill="currentColor" />
-        <circle cx="17" cy="20" r="1.5" fill="currentColor" />
-      </svg>
-      <span class="cart-toggle-badge" id="cart-badge">0</span>
-    </button>
+    <nav class="main-nav" aria-label="Módulos SIGR">
+      <button type="button" class="nav-tab is-active" data-view="pedidos">Pedidos</button>
+      <button type="button" class="nav-tab" data-view="auth">Sesión</button>
+      <button type="button" class="nav-tab" data-view="menu-admin">Menú (CRUD)</button>
+      <button type="button" class="nav-tab" data-view="pedidos-live">Pedidos en vivo</button>
+      <button type="button" class="nav-tab" data-view="reservas">Reservas</button>
+      <button type="button" class="nav-tab" data-view="caja">Caja y reportes</button>
+    </nav>
   </header>
 
-  <main class="layout">
-    <section class="menu-section" aria-labelledby="menu-heading">
-      <div class="menu-toolbar">
-        <h2 id="menu-heading" class="section-title">Menú</h2>
-        <div class="search-wrap">
-          <label for="search-input" class="visually-hidden">Buscar plato</label>
-          <input type="search" id="search-input" class="search-input" placeholder="Buscar plato…" autocomplete="off" />
+  <main class="layout layout-views">
+    <!-- Vista: pedidos (menú + carrito) -->
+    <section id="view-pedidos" class="view view-active" aria-labelledby="menu-heading">
+      <div class="menu-section">
+        <div class="menu-toolbar">
+          <h2 id="menu-heading" class="section-title">Menú</h2>
+          <div class="search-wrap">
+            <label for="search-input" class="visually-hidden">Buscar plato</label>
+            <input type="search" id="search-input" class="search-input" placeholder="Buscar plato…" autocomplete="off" />
+          </div>
+          <div class="category-filters" id="category-filters" role="group" aria-label="Filtrar por categoría"></div>
         </div>
-        <div class="category-filters" id="category-filters" role="group" aria-label="Filtrar por categoría"></div>
+        <div id="menu-grid" class="menu-grid"></div>
+        <p id="menu-empty" class="menu-empty hidden" role="status">No hay platos que coincidan con tu búsqueda.</p>
       </div>
-      <div id="menu-grid" class="menu-grid"></div>
-      <p id="menu-empty" class="menu-empty hidden" role="status">No hay platos que coincidan con tu búsqueda.</p>
+    </section>
+
+    <!-- Vista: autenticación (roles locales) -->
+    <section id="view-auth" class="view hidden" aria-labelledby="auth-heading">
+      <h2 id="auth-heading" class="section-title">Sesión y roles</h2>
+      <p class="view-lead">Identificación <strong>local</strong> (demo): no hay contraseña ni servidor. Sirve para etiquetar el uso del sistema como cliente, mesero o administrador.</p>
+      <div class="panel">
+        <form id="auth-form" class="auth-form">
+          <label class="field">
+            <span>Nombre o alias</span>
+            <input type="text" id="auth-name" required placeholder="Ej. David" autocomplete="username" />
+          </label>
+          <label class="field">
+            <span>Rol</span>
+            <select id="auth-role" required>
+              <option value="cliente">Cliente</option>
+              <option value="mesero">Mesero</option>
+              <option value="administrador">Administrador</option>
+            </select>
+          </label>
+          <button type="submit" class="btn btn-primary">Guardar sesión</button>
+        </form>
+        <div id="auth-current" class="auth-current hidden"></div>
+        <button type="button" class="btn btn-ghost btn-mt" id="auth-clear">Cerrar sesión</button>
+      </div>
+    </section>
+
+    <!-- Vista: CRUD menú -->
+    <section id="view-menu-admin" class="view hidden" aria-labelledby="crud-heading">
+      <h2 id="crud-heading" class="section-title">Menú digital (CRUD)</h2>
+      <p class="view-lead">Alta, edición y borrado de platos y categorías. Los datos se guardan en este navegador (<code>localStorage</code>). Puedes restaurar el menú inicial.</p>
+      <div class="panel panel-actions">
+        <button type="button" class="btn btn-ghost" id="menu-reset-seed">Restaurar menú por defecto</button>
+        <button type="button" class="btn btn-primary" id="menu-refresh-views">Aplicar y volver a cargar menú pedidos</button>
+      </div>
+      <div class="panel">
+        <h3 class="panel-title">Añadir plato</h3>
+        <form id="dish-add-form" class="grid-form">
+          <label class="field"><span>Nombre</span><input type="text" id="dish-new-name" required /></label>
+          <label class="field"><span>Descripción</span><input type="text" id="dish-new-desc" /></label>
+          <label class="field"><span>Precio (€)</span><input type="number" id="dish-new-price" min="0" step="0.01" required /></label>
+          <label class="field"><span>Categoría</span><input type="text" id="dish-new-cat" list="category-datalist" required placeholder="Ej. Entradas" /></label>
+          <label class="field field-span-2"><span>URL de imagen</span><input type="url" id="dish-new-img" placeholder="https://…" /></label>
+          <div class="field-span-2"><button type="submit" class="btn btn-primary">Añadir plato</button></div>
+        </form>
+        <datalist id="category-datalist"></datalist>
+      </div>
+      <div class="panel">
+        <h3 class="panel-title">Platos actuales</h3>
+        <div class="table-wrap">
+          <table class="data-table" id="menu-admin-table">
+            <thead>
+              <tr>
+                <th>Plato</th>
+                <th>Categoría</th>
+                <th>Precio</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="menu-admin-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vista: pedidos en vivo -->
+    <section id="view-pedidos-live" class="view hidden" aria-labelledby="live-heading">
+      <h2 id="live-heading" class="section-title">Registro y seguimiento de pedidos</h2>
+      <p class="view-lead">Listado de pedidos confirmados. El estado se actualiza en local; en producción real iría contra un backend. Puedes pulsar <strong>Actualizar</strong> para simular refresco.</p>
+      <div class="panel panel-actions">
+        <button type="button" class="btn btn-primary" id="orders-refresh">Actualizar lista</button>
+      </div>
+      <div class="panel">
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Fecha</th>
+                <th>Cliente</th>
+                <th>Total</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody id="orders-live-tbody"></tbody>
+          </table>
+        </div>
+        <p id="orders-live-empty" class="view-lead hidden">Aún no hay pedidos confirmados.</p>
+      </div>
+    </section>
+
+    <!-- Vista: reservas -->
+    <section id="view-reservas" class="view hidden" aria-labelledby="res-heading">
+      <h2 id="res-heading" class="section-title">Reservas</h2>
+      <p class="view-lead">Reservas por fecha y hora guardadas solo en este navegador.</p>
+      <div class="panel">
+        <h3 class="panel-title">Nueva reserva</h3>
+        <form id="reserva-form" class="grid-form">
+          <label class="field"><span>Nombre</span><input type="text" id="res-nombre" required /></label>
+          <label class="field"><span>Fecha</span><input type="date" id="res-fecha" required /></label>
+          <label class="field"><span>Hora</span><input type="time" id="res-hora" required /></label>
+          <label class="field"><span>Comensales</span><input type="number" id="res-comensales" min="1" value="2" required /></label>
+          <label class="field field-span-2"><span>Notas</span><input type="text" id="res-notas" placeholder="Opcional" /></label>
+          <div class="field-span-2"><button type="submit" class="btn btn-primary">Guardar reserva</button></div>
+        </form>
+      </div>
+      <div class="panel">
+        <h3 class="panel-title">Reservas guardadas</h3>
+        <ul class="reserva-list" id="reserva-list"></ul>
+        <p id="reserva-empty" class="view-lead hidden">No hay reservas.</p>
+      </div>
+    </section>
+
+    <!-- Vista: caja -->
+    <section id="view-caja" class="view hidden" aria-labelledby="caja-heading">
+      <h2 id="caja-heading" class="section-title">Cierre de caja y reportes</h2>
+      <p class="view-lead">Totales por día a partir de pedidos confirmados. El cierre queda registrado como instantánea en <code>localStorage</code>.</p>
+      <div class="panel">
+        <label class="field inline-field">
+          <span>Día a analizar</span>
+          <input type="date" id="caja-fecha" />
+        </label>
+        <button type="button" class="btn btn-primary" id="caja-calc">Calcular totales del día</button>
+        <div id="caja-resumen" class="caja-resumen hidden"></div>
+        <button type="button" class="btn btn-ghost btn-mt" id="caja-cerrar">Registrar cierre del día</button>
+      </div>
+      <div class="panel">
+        <h3 class="panel-title">Cierres registrados</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Día</th>
+                <th>Total</th>
+                <th>Pedidos</th>
+                <th>Registrado</th>
+              </tr>
+            </thead>
+            <tbody id="caja-cierres-tbody"></tbody>
+          </table>
+        </div>
+        <p id="caja-cierres-empty" class="view-lead hidden">Sin cierres aún.</p>
+      </div>
     </section>
   </main>
 

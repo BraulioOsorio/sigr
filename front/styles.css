@@ -71,12 +71,82 @@ body {
   top: 0;
   z-index: 50;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.5rem;
   padding: 1rem 1.25rem;
   background: rgba(15, 20, 25, 0.85);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.session-badge {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  max-width: 160px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.main-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  width: 100%;
+  justify-content: flex-start;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border);
+}
+
+@media (min-width: 960px) {
+  .main-nav {
+    justify-content: center;
+    border-top: none;
+    padding-top: 0.35rem;
+  }
+}
+
+.nav-tab {
+  padding: 0.4rem 0.65rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color var(--transition), border-color var(--transition), background var(--transition);
+}
+
+.nav-tab:hover {
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.nav-tab.is-active {
+  color: var(--accent);
+  border-color: rgba(232, 165, 75, 0.45);
+  background: var(--accent-soft);
+}
+
+.cart-toggle.hidden {
+  display: none;
 }
 
 .brand {
@@ -778,4 +848,158 @@ body {
   color: var(--success);
   font-weight: 600;
   margin-bottom: 1rem;
+}
+
+/* Vistas modulares (SIGR) */
+.view {
+  min-width: 0;
+}
+
+.view-lead {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin: 0 0 1.25rem;
+  max-width: 720px;
+}
+
+.view-lead code {
+  font-size: 0.85em;
+  color: var(--accent);
+}
+
+.panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.panel-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  margin: 0 0 0.85rem;
+}
+
+.panel-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  align-items: center;
+}
+
+.auth-form .field,
+.auth-current {
+  margin-bottom: 0.85rem;
+}
+
+.btn-mt {
+  margin-top: 0.75rem;
+}
+
+.grid-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+}
+
+@media (min-width: 560px) {
+  .grid-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.field-span-2 {
+  grid-column: 1 / -1;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.data-table th,
+.data-table td {
+  padding: 0.55rem 0.65rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.data-table th {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.table-actions {
+  white-space: nowrap;
+}
+
+.btn-sm {
+  padding: 0.35rem 0.55rem;
+  font-size: 0.8rem;
+}
+
+.danger-text {
+  color: var(--danger) !important;
+}
+
+.status-select {
+  background: var(--bg-deep);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.35rem 0.5rem;
+  font-family: inherit;
+  font-size: 0.85rem;
+}
+
+.reserva-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.reserva-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.reserva-note {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+.caja-resumen {
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+
+.inline-field {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.inline-field input[type="date"] {
+  padding: 0.5rem 0.65rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg-deep);
+  color: var(--text);
+  font-family: inherit;
 }

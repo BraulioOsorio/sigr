@@ -24,7 +24,7 @@ Proyecto académico de **gestión de configuración** y producto software orient
 **SIGR** agrupa:
 
 - **Documentación de línea base** y evidencias del curso (`docs/`).
-- **Front de pedidos** en HTML, CSS y JavaScript **vanilla** (sin frameworks): menú por categorías, carrito, checkout y persistencia local.
+- **Front SIGR** en HTML, CSS y JavaScript **vanilla** (sin frameworks): cinco módulos de demostración con datos en **`localStorage`** (sin backend).
 
 El nombre del repositorio en GitHub es **`sigr`** (mismo acrónimo que SIGR).
 
@@ -65,7 +65,7 @@ sigr/
 | `LICENSE` | Licencia MIT (texto duplicado por requisito de enunciado). |
 | `front/index.html` | Punto de entrada del navegador; enlaza `styles.css` y `script.js`. |
 | `front/styles.css` | Layout (rejilla de platos hasta 3 columnas, carrito en modal, modales), tipografías y animaciones. |
-| `front/script.js` | Modelo de datos del menú (~12 platos), lógica del carrito, filtros, búsqueda y pedidos. |
+| `front/script.js` | Menú (semilla + CRUD), carrito, pedidos y estados, sesión por rol, reservas, cierres de caja y navegación entre vistas. |
 
 ---
 
@@ -95,9 +95,18 @@ git log --oneline -5
 
 ---
 
-## Aplicación web de pedidos (`front/`)
+## Aplicación web (`front/`)
 
-Interfaz tipo **app de restaurante**: tarjetas con foto, nombre, descripción, precio y categoría (hasta **tres columnas** en pantallas anchas); **icono de carrito** arriba a la derecha que abre un **modal** para revisar líneas, cambiar cantidades o quitar productos y **Continuar** al checkout; formulario de cliente (mesa o domicilio); resumen al confirmar.
+Interfaz tipo **app de restaurante** con pestañas de módulos. Todo el estado vive en el navegador (`localStorage`); no hay servidor ni base de datos.
+
+**Módulos incluidos (prototipo local)**
+
+1. **Pedidos** — Tarjetas de platos (foto, precio, categoría), carrito en modal, checkout (mesa o domicilio), resumen al confirmar.
+2. **Sesión** — Nombre y rol simulados (*cliente*, *mesero*, *administrador*); sin contraseña.
+3. **Menú CRUD** — Alta, edición y borrado de platos y categorías; restaurar menú semilla.
+4. **Pedidos en vivo** — Tabla de pedidos confirmados y cambio de estado (*pendiente → en preparación → listo → entregado*); botón *Actualizar* (no hay WebSocket).
+5. **Reservas** — Fecha, hora, comensales y notas; listado y borrado local.
+6. **Caja** — Total del día por calendario y registro de **cierres** como instantánea en almacenamiento local.
 
 ### Cómo ejecutarla
 
@@ -126,18 +135,15 @@ Abre `front/index.html` con el navegador (doble clic o *Abrir con*). Las imágen
 
 ### Funcionalidades principales
 
-- Listado de **12 platos** en categorías: Entradas, Platos fuertes, Bebidas, Postres.
-- Fotografías de **alta calidad** (URLs públicas Unsplash, formato optimizado `auto=format&fit=crop`).
-- **Agregar al pedido**, contador en tarjeta y total dinámico.
-- Carrito: **aumentar / disminuir** cantidad, **eliminar** línea.
-- **Filtro** por categoría y **búsqueda** por texto en nombre y descripción.
-- Checkout: nombre del cliente, **mesa** o **dirección** según tipo de servicio.
-- **Resumen** del pedido tras confirmar.
-- **`localStorage`**: clave `sigr_cart_v1` (carrito) y `sigr_orders_v1` (historial de pedidos confirmados).
+- Navegación por **vistas** (Pedidos, Sesión, Menú CRUD, Pedidos en vivo, Reservas, Caja).
+- Menú inicial desde **`MENU_SEED`** en `front/script.js`; el usuario puede modificarlo desde **Menú CRUD** o volver a la semilla.
+- Fotografías por **URL** (por defecto Unsplash con parámetros de recorte).
+- Carrito, filtros por categoría, búsqueda y checkout como antes.
+- **`localStorage`**: ver tabla en [`docs/DATABASE.md`](docs/DATABASE.md) (`sigr_menu_v1`, `sigr_cart_v1`, `sigr_orders_v1`, `sigr_session_v1`, `sigr_reservations_v1`, `sigr_cash_closures_v1`).
 
 ### Personalización rápida
 
-- **Menú y precios:** edita el array `MENU` en `front/script.js`.
+- **Menú semilla y platos por defecto:** constante `MENU_SEED` en `front/script.js`.
 - **Colores y tipografía:** variables `:root` en `front/styles.css`.
 - **Textos legales / marca:** `front/index.html` (cabecera y títulos de modales).
 
@@ -166,12 +172,12 @@ Los hitos relevantes (commit inicial, documentación, front) se reflejan en el h
 
 ## Roadmap sugerido
 
-Ideas alineadas con el enunciado del SIGR (no implementadas aún en este repo):
+Siguiente salto de calidad (fuera del alcance de este prototipo estático):
 
-- API backend y base de datos (pedidos persistentes en servidor).
-- Roles: cliente, mesero, administrador.
-- Módulo de **reservas** y de **reportes** / caja.
-- `CHANGELOG.md` y pipeline CI (por ejemplo GitHub Actions) cuando el equipo lo defina en la línea base.
+- API backend, base de datos y autenticación real.
+- Pedidos y reservas **multiusuario** y tiempo real (WebSockets o similar).
+- Caja auditada en servidor, informes y facturación electrónica.
+- Pipeline CI (por ejemplo GitHub Actions) cuando el equipo lo defina.
 
 ---
 
