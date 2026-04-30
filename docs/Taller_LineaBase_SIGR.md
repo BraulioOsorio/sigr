@@ -58,8 +58,9 @@ Describir el **primer hito de estabilidad** del SIGR en términos funcionales y 
 | **Commit inicial (GitHub)** | `01e971a72995c86a5dd03305efe145d91d26593f` — *Initial commit* |
 | **Commit con documentación e imágenes del taller** | `77c01bcecff75bd7680eed7225e7605866674b06` — *Documentacion inicial* (`docs/assets/`, capturas del proceso) |
 | **Commit con front de pedidos y README ampliado** | `8974a804216942e7dc129f5d3936247365efe9ae` — *Front inicial* (`front/`, documentación operativa) |
+| **Último commit de la línea base documentada** | `3fa2e4aabba320f84f227dcbb1077b3acac32c72` — *docs: hash completo dbc4069 en CHANGELOG* (incluye `CHANGELOG.md`, `LICENSE.txt`, `docs/DEPLOY.md`, `docs/DATABASE.md` vía `dbc4069`) |
 
-*El enunciado genérico puede citar el hash de ejemplo `a93b4f1`; la referencia real del equipo es la tabla anterior (último hito: `8974a80…`).*
+*El enunciado genérico puede citar el hash de ejemplo `a93b4f1`; la referencia real del equipo es la tabla anterior (rango útil: desde `01e971a` hasta el HEAD indicado).*
 
 #### 4.3.1. Creación del repositorio en GitHub
 

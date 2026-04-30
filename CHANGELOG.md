@@ -35,5 +35,6 @@ Estado del código y la documentación asociada al taller de **gestión de confi
 | `77c01bc` | `77c01bcecff75bd7680eed7225e7605866674b06` | Documentacion inicial |
 | `8974a80` | `8974a804216942e7dc129f5d3936247365efe9ae` | Front inicial |
 | `dbc4069` | `dbc4069a6a9d7dcbf9e8481187b4fec44430052d` | docs: CHANGELOG, LICENSE.txt, DEPLOY y DATABASE para línea base AA2 |
+| `3fa2e4a` | `3fa2e4aabba320f84f227dcbb1077b3acac32c72` | docs: hash completo dbc4069 en CHANGELOG |
 
-> *El enunciado genérico del curso puede citar un hash de ejemplo distinto (`a93b4f1`); la referencia real del equipo es la tabla anterior (último: `dbc4069`).*
+> *El enunciado genérico del curso puede citar un hash de ejemplo distinto (`a93b4f1`); la referencia real del equipo es la tabla anterior (último: `3fa2e4a`).*
