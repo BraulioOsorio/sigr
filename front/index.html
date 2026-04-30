@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SIGR — Pedidos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-bg" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">◆</span>
+      <div>
+        <h1 class="brand-title">SIGR</h1>
+        <p class="brand-tag">Pedidos en sala</p>
+      </div>
+    </div>
+    <button
+      type="button"
+      class="cart-toggle"
+      id="cart-toggle"
+      aria-expanded="false"
+      aria-controls="cart-overlay"
+      title="Ver carrito"
+    >
+      <span class="visually-hidden">Abrir carrito del pedido</span>
+      <svg class="cart-toggle-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path
+          d="M6 6h15l-1.5 9h-12L6 6Zm0 0L5 3H2"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <circle cx="9" cy="20" r="1.5" fill="currentColor" />
+        <circle cx="17" cy="20" r="1.5" fill="currentColor" />
+      </svg>
+      <span class="cart-toggle-badge" id="cart-badge">0</span>
+    </button>
+  </header>
+
+  <main class="layout">
+    <section class="menu-section" aria-labelledby="menu-heading">
+      <div class="menu-toolbar">
+        <h2 id="menu-heading" class="section-title">Menú</h2>
+        <div class="search-wrap">
+          <label for="search-input" class="visually-hidden">Buscar plato</label>
+          <input type="search" id="search-input" class="search-input" placeholder="Buscar plato…" autocomplete="off" />
+        </div>
+        <div class="category-filters" id="category-filters" role="group" aria-label="Filtrar por categoría"></div>
+      </div>
+      <div id="menu-grid" class="menu-grid"></div>
+      <p id="menu-empty" class="menu-empty hidden" role="status">No hay platos que coincidan con tu búsqueda.</p>
+    </section>
+  </main>
+
+  <!-- Carrito (modal) -->
+  <div class="modal-overlay hidden" id="cart-overlay" role="dialog" aria-modal="true" aria-labelledby="cart-modal-title">
+    <div class="modal modal-cart">
+      <button type="button" class="modal-close" id="cart-modal-close" aria-label="Cerrar carrito">×</button>
+      <h2 id="cart-modal-title" class="modal-title modal-cart-title">Tu pedido</h2>
+      <p class="cart-empty-msg" id="cart-empty">Aún no has añadido platos. Explora el menú.</p>
+      <ul class="cart-list" id="cart-list"></ul>
+      <div class="cart-footer">
+        <div class="cart-total-row">
+          <span>Total</span>
+          <strong id="cart-total">0,00 €</strong>
+        </div>
+        <button type="button" class="btn btn-primary btn-block" id="btn-checkout" disabled>Continuar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkout -->
+  <div class="modal-overlay hidden" id="checkout-overlay" role="dialog" aria-modal="true" aria-labelledby="checkout-title">
+    <div class="modal">
+      <button type="button" class="modal-close" id="checkout-close" aria-label="Cerrar">×</button>
+      <h2 id="checkout-title" class="modal-title">Datos del pedido</h2>
+      <form id="checkout-form" class="checkout-form">
+        <label class="field">
+          <span>Nombre del cliente</span>
+          <input type="text" name="customer" id="customer-name" required placeholder="Ej. María López" />
+        </label>
+        <fieldset class="field field-radio">
+          <legend>¿Dónde servimos?</legend>
+          <label class="radio-row">
+            <input type="radio" name="service" value="mesa" checked />
+            <span>Mesa en el restaurante</span>
+          </label>
+          <label class="radio-row">
+            <input type="radio" name="service" value="domicilio" />
+            <span>Domicilio</span>
+          </label>
+        </fieldset>
+        <label class="field" id="field-mesa">
+          <span>Número de mesa</span>
+          <input type="text" name="mesa" id="mesa-input" inputmode="numeric" placeholder="Ej. 12" required />
+        </label>
+        <label class="field hidden" id="field-direccion">
+          <span>Dirección de entrega</span>
+          <textarea name="direccion" id="direccion-input" rows="2" placeholder="Calle, número, ciudad…"></textarea>
+        </label>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-ghost" id="checkout-cancel">Volver</button>
+          <button type="submit" class="btn btn-primary">Confirmar pedido</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Resumen -->
+  <div class="modal-overlay hidden" id="summary-overlay" role="dialog" aria-modal="true" aria-labelledby="summary-title">
+    <div class="modal modal-wide">
+      <h2 id="summary-title" class="modal-title">Pedido confirmado</h2>
+      <div id="summary-content" class="summary-content"></div>
+      <button type="button" class="btn btn-primary btn-block" id="summary-done">Entendido</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
