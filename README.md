@@ -145,7 +145,7 @@ Abre `front/index.html` con el navegador (doble clic o *Abrir con*). Las imágen
 
 ## Documentación del taller
 
-El informe grupal para la asignatura **Gestión del software** (línea base, criterios, Git) está en:
+El informe del **AA2** (línea base, criterios, Git) para **Gestión del software** está en:
 
 **[`docs/Taller_LineaBase_SIGR.md`](docs/Taller_LineaBase_SIGR.md)**
 
