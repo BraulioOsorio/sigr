@@ -1,6 +1,6 @@
 # AA2 — Línea base software de restaurante (SIGR)
 
-> **Uso del documento:** borrador para generar el PDF `Taller_LineaBase_SIGR.pdf` (Pandoc, Word o imprimir desde el visor). Imágenes en `docs/assets/`.
+> **Uso del documento:** borrador para generar el PDF `Taller_LineaBase_SIGR.pdf` (Pandoc, Word o imprimir desde el visor). Imágenes en `docs/assets/`. En el programa la actividad puede figurar como “Taller grupal”; este entregable corresponde a **un integrante** y cita los **elementos del enunciado AA2** (secciones 1 a 4.7) para alinear con la rúbrica.
 
 ---
 
@@ -112,11 +112,21 @@ Repositorio: `BraulioOsorio/sigr`, rama `main`. **Root directory:** `front` (par
 ### 4.4. Criterios para establecer la línea base
 
 - **Front operativo:** el contenido de `front/` se ejecuta en local (p. ej. `python3 -m http.server` dentro de `front/`) y en **producción** en Render, con recorrido manual comprobado: menú, filtros, carrito, checkout y resumen.
-- **Herramientas utilizadas:** **Git** y **GitHub** para versionado; **Render** para publicación del estático enlazado al mismo repositorio.
+- **Compilación / build:** no aplica pipeline de compilación: el entregable es **HTML, CSS y JS estático**; la “compilación” del hito se entiende como conjunto de archivos coherentes y servibles sin errores.
 - **Estructura del repositorio:** `docs/` (informe, `DEPLOY`, `DATABASE`, `assets/`), `front/` (aplicación), raíz con `README.md`, `LICENSE`, `LICENSE.txt`, `CHANGELOG.md`.
 - **Documentación mínima:** `README.md` (clonar, ejecutar, estructura), `docs/DEPLOY.md` (local y Render), `docs/DATABASE.md` (`localStorage` y modelo futuro), `CHANGELOG.md` (historial hasta la versión documentada).
 
-### 4.5. Documentación asociada
+### 4.5. Herramientas de soporte
+
+| Herramienta | Uso en esta línea base |
+|-------------|-------------------------|
+| **Git** | Control de versiones local; commits y rama `main`. |
+| **GitHub** | Repositorio remoto `BraulioOsorio/sigr`, clonado y `push` documentados. |
+| **Render** | Sitio estático público del front: [https://sigr.onrender.com/](https://sigr.onrender.com/). |
+| **GitHub Issues** | No activado en este hito; queda disponible para seguimiento de mejoras e incidencias en iteraciones posteriores. |
+| **Jenkins** | No utilizado en esta línea base *(opcional según guía docente; reservado para integración continua futura)*. |
+
+### 4.6. Documentación asociada
 
 | Artefacto | Estado |
 |-----------|--------|
@@ -125,6 +135,14 @@ Repositorio: `BraulioOsorio/sigr`, rama `main`. **Root directory:** `front` (par
 | `LICENSE` y `LICENSE.txt` | MIT — mismo texto. |
 | `docs/DEPLOY.md` | Despliegue local y Render. |
 | `docs/DATABASE.md` | Persistencia actual y entidades previstas. |
+
+### 4.7. Validación y aprobación de la línea base
+
+| Campo | Valor |
+|--------|--------|
+| **Fecha de creación de la línea base documentada** | 30/04/2026 |
+| **Validado por** | David Alejandro Osorio Martínez |
+| **Responsable de aprobación del entregable** | David Alejandro Osorio Martínez *(actividad presentada de forma individual)* |
 
 ---
 
