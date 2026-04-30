@@ -46,7 +46,7 @@ Describir el **primer hito de estabilidad** del SIGR en términos funcionales y 
 - Módulo de **reservas** por fecha y hora.
 - Módulo de **cierre de caja** y reportes de ventas diarios.
 
-*En la versión actual del repositorio solo está inicializado el proyecto (README, licencia); los módulos anteriores constituyen el alcance acordado para evolucionar sobre esta línea base.*
+*En la versión actual del repositorio existe un **prototipo de pedidos en sala** (`front/`: menú, carrito, checkout y `localStorage`). El resto de módulos (autenticación en servidor, CRUD de menú en backend, reservas, caja, reportes y facturación) constituyen el **alcance previsto** para iteraciones posteriores sobre esta línea base.*
 
 ### 4.3. Versionado del código
 
@@ -57,8 +57,9 @@ Describir el **primer hito de estabilidad** del SIGR en términos funcionales y 
 | **Rama principal estable** | `main` |
 | **Commit inicial (GitHub)** | `01e971a72995c86a5dd03305efe145d91d26593f` — *Initial commit* |
 | **Commit con documentación e imágenes del taller** | `77c01bcecff75bd7680eed7225e7605866674b06` — *Documentacion inicial* (`docs/assets/`, capturas del proceso) |
+| **Commit con front de pedidos y README ampliado** | `8974a804216942e7dc129f5d3936247365efe9ae` — *Front inicial* (`front/`, documentación operativa) |
 
-*Si el enunciado del curso cita un hash de ejemplo distinto, mantener esta tabla como referencia real del repositorio del equipo.*
+*El enunciado genérico puede citar el hash de ejemplo `a93b4f1`; la referencia real del equipo es la tabla anterior (último hito: `8974a80…`).*
 
 #### 4.3.1. Creación del repositorio en GitHub
 
@@ -131,11 +132,11 @@ Con esto queda **trazabilidad** en el historial de Git de la primera subida de d
 
 ### 4.4. Criterios para establecer la línea base
 
-- Los módulos iniciales previstos **compilan / ejecutan** según vaya incorporándose el código *(pendiente de ampliar cuando exista build)*.
-- Las **funcionalidades críticas** acordadas con el tutor quedan operativas y validadas en el hito declarado.
-- **Pruebas básicas** de integración completadas para ese hito.
-- **Estructura de carpetas** y convenciones de código definidas por el equipo.
-- **Documentación técnica mínima:** README, esquema o notas de base de datos, manual de despliegue *(ir completando en commits posteriores)*.
+- **Ejecución del front:** el prototipo en `front/` se ejecuta en navegador (servidor estático opcional) sin errores de consola en flujos básicos (menú, carrito, checkout, resumen).
+- **Funcionalidades críticas del hito:** toma de pedido de demostración operativa; el resto de módulos del SIGR permanecen planificados *(validación formal con el tutor según criterio del curso)*.
+- **Pruebas:** pruebas manuales de recorrido (*smoke*) sobre el front; sin suite automatizada en esta línea base.
+- **Estructura de carpetas:** `docs/` (taller, despliegue, notas de datos), `front/` (HTML/CSS/JS), raíz (`README`, `LICENSE`, `CHANGELOG`).
+- **Documentación técnica mínima:** `README.md`, `docs/DATABASE.md` (estado de persistencia y modelo previsto), `docs/DEPLOY.md` (despliegue del front estático).
 
 ### 4.5. Herramientas de soporte
 
@@ -147,15 +148,17 @@ Con esto queda **trazabilidad** en el historial de Git de la primera subida de d
 
 | Artefacto | Estado |
 |-----------|--------|
-| `README.md` | Incluido — instrucciones de clonado ampliadas en este taller y en el propio README del repo si se actualiza. |
-| `CHANGELOG.md` | *[Añadir en el repo y resumir aquí los cambios hasta la línea base]* |
-| `LICENSE` / licencia MIT | Incluido en el repositorio (equivalente a `LICENSE.txt` del enunciado). |
+| `README.md` | Incluido — clonado, estructura, ejecución del front, créditos de imágenes. |
+| `CHANGELOG.md` | Incluido — historial hasta la línea base `0.1.0` con commits referenciados. |
+| `LICENSE` y `LICENSE.txt` | MIT — mismo texto (el enunciado nombra `LICENSE.txt`). |
+| `docs/DEPLOY.md` | Manual breve de despliegue del front estático. |
+| `docs/DATABASE.md` | Notas sobre `localStorage` y modelo de datos futuro. |
 
 ### 4.7. Validación y aprobación de la línea base
 
 | Campo | Valor |
 |--------|--------|
-| **Fecha de creación** | *[dd/mm/aaaa]* |
+| **Fecha de creación** | 29/04/2026 *(fecha de cierre de documentación de esta versión; ajustar si el equipo acuerda otra)* |
 | **Validado por** | Grupo de desarrollo |
 | **Responsable de aprobación** | *[Coordinador del equipo o rol designado]* |
 
@@ -165,3 +168,5 @@ Con esto queda **trazabilidad** en el historial de Git de la primera subida de d
 
 - Documento fuente: `docs/Taller_LineaBase_SIGR.md`
 - Imágenes: `docs/assets/01-creacion-repositorio-github.png`, `02-repositorio-clone-https.png`, `03-terminal-git-clone.png`
+- Cambios versionados: `CHANGELOG.md`
+- Despliegue y datos: `docs/DEPLOY.md`, `docs/DATABASE.md`

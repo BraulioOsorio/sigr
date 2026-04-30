@@ -36,8 +36,11 @@ El nombre del repositorio en GitHub es **`sigr`** (mismo acrónimo que SIGR).
 sigr/
 ├── LICENSE                 # Licencia MIT
 ├── README.md               # Este archivo
+├── CHANGELOG.md            # Historial de cambios hasta la línea base
 ├── docs/
 │   ├── Taller_LineaBase_SIGR.md   # Informe del taller (exportable a PDF)
+│   ├── DEPLOY.md                  # Despliegue del front estático
+│   ├── DATABASE.md                # Estado de datos (localStorage / modelo futuro)
 │   └── assets/                    # Capturas para la documentación
 │       ├── 01-creacion-repositorio-github.png
 │       ├── 02-repositorio-clone-https.png
@@ -51,7 +54,11 @@ sigr/
 | Ruta | Propósito |
 |------|-----------|
 | `docs/Taller_LineaBase_SIGR.md` | Contenido del **AA2** (introducción, objetivos, versionado Git, criterios de línea base, validación). |
+| `docs/DEPLOY.md` | Manual de despliegue del front estático. |
+| `docs/DATABASE.md` | Estado de persistencia y modelo de datos previsto. |
 | `docs/assets/*.png` | Evidencias gráficas (creación del repo, clonado, terminal). |
+| `CHANGELOG.md` | Historial de cambios hasta la línea base (`0.1.0`). |
+| `LICENSE` | Licencia MIT (texto duplicado por requisito de enunciado). |
 | `front/index.html` | Punto de entrada del navegador; enlaza `styles.css` y `script.js`. |
 | `front/styles.css` | Layout (rejilla de platos hasta 3 columnas, carrito en modal, modales), tipografías y animaciones. |
 | `front/script.js` | Modelo de datos del menú (~12 platos), lógica del carrito, filtros, búsqueda y pedidos. |
@@ -137,6 +144,8 @@ El informe grupal para la asignatura **Gestión del software** (línea base, cri
 **[`docs/Taller_LineaBase_SIGR.md`](docs/Taller_LineaBase_SIGR.md)**
 
 Desde ahí puedes exportar a **PDF** (por ejemplo con Pandoc, Word o *Imprimir → Guardar como PDF*) siguiendo el nombre indicado por el curso: `Taller_LineaBase_SIGR.pdf`.
+
+Otros documentos del entregable: [`CHANGELOG.md`](CHANGELOG.md), [`docs/DEPLOY.md`](docs/DEPLOY.md), [`docs/DATABASE.md`](docs/DATABASE.md).
 
 ---
 
