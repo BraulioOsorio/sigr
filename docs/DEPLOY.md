@@ -28,10 +28,28 @@ En esta línea base el producto entregable ejecutable es el **front estático** 
 
    Abrir `index.html` con el navegador. Las imágenes del menú requieren conexión a Internet (Unsplash).
 
-## Despliegue público (opcional)
+## Despliegue público
 
-- **GitHub Pages:** publicar la carpeta `front/` como raíz del sitio o subruta, según la configuración del repositorio.
-- Cualquier hosting de **sitios estáticos** (Netlify, Cloudflare Pages, etc.) puede apuntar al subdirectorio `front/` como directorio de publicación.
+### Instancia en Render (activa)
+
+El front está publicado como **sitio estático** en Render:
+
+**URL pública:** [https://sigr.onrender.com/](https://sigr.onrender.com/)
+
+| Parámetro | Valor recomendado |
+|-----------|-------------------|
+| Repositorio | `BraulioOsorio/sigr` (GitHub) |
+| Rama | `main` |
+| **Root Directory** | **`front`** *(obligatorio: el `index.html` del pedido está dentro de `front/`; si se deja vacío, el sitio no servirá la app correctamente)* |
+| Build Command | *(vacío — no hay paso de build)* |
+| Publish directory | *(según Render: con root `front`, los archivos publicados son los de esa carpeta)* |
+
+Tras cada `git push` a `main`, Render puede redesplegar automáticamente el sitio (según tengáis activados los despliegues automáticos).
+
+### Otras plataformas (opcional)
+
+- **GitHub Pages:** publicar la carpeta `front/` como raíz del sitio o subruta.
+- **Netlify, Cloudflare Pages, etc.:** mismo criterio: directorio de publicación = **`front/`**.
 
 ## Limitaciones de esta versión
 

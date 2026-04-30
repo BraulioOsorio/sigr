@@ -28,6 +28,8 @@ Proyecto académico de **gestión de configuración** y producto software orient
 
 El nombre del repositorio en GitHub es **`sigr`** (mismo acrónimo que SIGR).
 
+**Demostración en línea (front):** [https://sigr.onrender.com/](https://sigr.onrender.com/) — sitio estático en [Render](https://render.com/) enlazado al repo; detalles en [`docs/DEPLOY.md`](docs/DEPLOY.md).
+
 ---
 
 ## Estructura del repositorio
@@ -44,7 +46,9 @@ sigr/
 │   └── assets/                    # Capturas para la documentación
 │       ├── 01-creacion-repositorio-github.png
 │       ├── 02-repositorio-clone-https.png
-│       └── 03-terminal-git-clone.png
+│       ├── 03-terminal-git-clone.png
+│       ├── 04-render-config-static-site.png
+│       └── 05-render-deploy-live.png
 └── front/                  # Aplicación web estática de pedidos
     ├── index.html          # Marcado y regiones principales (menú, carrito, modales)
     ├── styles.css          # Estilos responsive y tema visual
@@ -105,6 +109,8 @@ python3 -m http.server 8080
 ```
 
 Abre en el navegador: `http://127.0.0.1:8080`
+
+**Producción (Render):** [https://sigr.onrender.com/](https://sigr.onrender.com/) — misma app servida desde la carpeta `front/` del repo (ver [`docs/DEPLOY.md`](docs/DEPLOY.md)).
 
 **Opción B — Archivo directo**
 

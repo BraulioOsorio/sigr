@@ -131,17 +131,30 @@ Tras añadir la carpeta `docs/` con material del taller (en el commit registrado
 
 Con esto queda **trazabilidad** en el historial de Git de la primera subida de documentación asociada a la línea base del taller.
 
+#### 4.3.5. Despliegue público (Render)
+
+El prototipo de pedidos quedó alojado como **sitio estático** en Render, con URL pública:
+
+**[https://sigr.onrender.com/](https://sigr.onrender.com/)**
+
+Repositorio conectado: `BraulioOsorio/sigr`, rama `main`. En la configuración del servicio, el **root directory** debe ser la carpeta **`front`** para que el documento raíz sea `index.html` del cliente y carguen `styles.css` y `script.js` con rutas relativas correctas.
+
+![Configuración del sitio estático en Render (repo, rama, nombre sigr)](assets/04-render-config-static-site.png)
+
+![Despliegue correcto en Render (sitio activo)](assets/05-render-deploy-live.png)
+
 ### 4.4. Criterios para establecer la línea base
 
-- **Ejecución del front:** el prototipo en `front/` se ejecuta en navegador (servidor estático opcional) sin errores de consola en flujos básicos (menú, carrito, checkout, resumen).
+- **Ejecución del front:** el prototipo en `front/` se ejecuta en navegador (local o **producción** en [https://sigr.onrender.com/](https://sigr.onrender.com/)) sin errores de consola en flujos básicos (menú, carrito, checkout, resumen).
 - **Funcionalidades críticas del hito:** toma de pedido de demostración operativa; el resto de módulos del SIGR permanecen planificados *(validación formal con el tutor según criterio del curso)*.
 - **Pruebas:** pruebas manuales de recorrido (*smoke*) sobre el front; sin suite automatizada en esta línea base.
 - **Estructura de carpetas:** `docs/` (taller, despliegue, notas de datos), `front/` (HTML/CSS/JS), raíz (`README`, `LICENSE`, `CHANGELOG`).
-- **Documentación técnica mínima:** `README.md`, `docs/DATABASE.md` (estado de persistencia y modelo previsto), `docs/DEPLOY.md` (despliegue del front estático).
+- **Documentación técnica mínima:** `README.md`, `docs/DATABASE.md` (estado de persistencia y modelo previsto), `docs/DEPLOY.md` (despliegue local y **URL pública Render**).
 
 ### 4.5. Herramientas de soporte
 
 - **GitHub:** control de versiones y colaboración.
+- **Render:** alojamiento del front como sitio estático (demostración: [https://sigr.onrender.com/](https://sigr.onrender.com/)).
 - **GitHub Issues:** seguimiento de mejoras y errores *(activar en el repo si el equipo lo usa)*.
 - **Jenkins** *(opcional)* para integración continua futura.
 
@@ -168,6 +181,6 @@ Con esto queda **trazabilidad** en el historial de Git de la primera subida de d
 ## Referencias de archivos en este entregable
 
 - Documento fuente: `docs/Taller_LineaBase_SIGR.md`
-- Imágenes: `docs/assets/01-creacion-repositorio-github.png`, `02-repositorio-clone-https.png`, `03-terminal-git-clone.png`
+- Imágenes: `docs/assets/01-creacion-repositorio-github.png`, `02-repositorio-clone-https.png`, `03-terminal-git-clone.png`, `04-render-config-static-site.png`, `05-render-deploy-live.png`
 - Cambios versionados: `CHANGELOG.md`
 - Despliegue y datos: `docs/DEPLOY.md`, `docs/DATABASE.md`

@@ -20,6 +20,7 @@ Estado del código y la documentación asociada al taller de **gestión de confi
 - **`docs/DEPLOY.md`**: guía breve de despliegue del front estático.
 - **`docs/DATABASE.md`**: nota sobre almacenamiento en esta línea base (sin motor SQL aún) y entidades previstas.
 - **Cierre documentación 4.6 AA2** (`dbc4069`): inclusión de `CHANGELOG.md`, `LICENSE.txt`, actualización del informe `Taller_LineaBase_SIGR.md` y `README.md` con enlaces a los nuevos documentos.
+- **Sitio público en Render:** [https://sigr.onrender.com/](https://sigr.onrender.com/) — documentado en `README.md`, `docs/DEPLOY.md` y `docs/Taller_LineaBase_SIGR.md` (apartado 4.3.5); evidencias `docs/assets/04-render-config-static-site.png` y `05-render-deploy-live.png`.
 
 ### Alcance no incluido en esta línea base
 
