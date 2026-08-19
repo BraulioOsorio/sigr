@@ -120,6 +120,8 @@ h2:after{content:"";display:block;width:62px;height:5px;border-radius:5px;backgr
 .bar-label{font-size:.8rem;color:var(--muted);margin-top:7px}
 .callout{padding:clamp(14px,3vw,20px);border-radius:16px;background:linear-gradient(120deg,#e9f7fb,#fff4e8);border:1px solid #d8e9ef;margin:20px 0;overflow-wrap:anywhere}
 .refs{font-size:.92rem;line-height:1.7}
+.refs a{color:var(--blue);word-break:break-word}
+.refs a:hover{color:var(--orange)}
 footer{background:var(--navy);color:#dcecf8;padding:30px 7%;text-align:center}
 
 @media (max-width:900px){
@@ -145,6 +147,18 @@ footer{background:var(--navy);color:#dcecf8;padding:30px 7%;text-align:center}
   .cta{width:100%;text-align:center}
   .chart{height:190px}
 }
+
+.table-wrap{overflow-x:auto;margin:18px 0}
+.data-table{width:100%;border-collapse:collapse;background:white;border-radius:14px;overflow:hidden;box-shadow:0 5px 18px rgba(16,42,67,.07)}
+.data-table th,.data-table td{padding:12px 14px;border-bottom:1px solid #e7edf3;text-align:left;line-height:1.45}
+.data-table th{background:#eef7f8;color:var(--blue);font-weight:800}
+.data-table tr:last-child td{border-bottom:0}
+.analysis{border-left:5px solid var(--cyan);background:#f4fbfb}
+.subhead{margin:28px 0 10px;color:var(--navy);font-size:1.35rem}
+.country-list{columns:2;column-gap:30px}
+.country-list li{break-inside:avoid;margin-bottom:8px}
+@media(max-width:650px){.country-list{columns:1}.data-table{font-size:.92rem}.data-table th,.data-table td{padding:10px}}
+
 </style>
 </head>
 <body>
@@ -232,12 +246,10 @@ footer{background:var(--navy);color:#dcecf8;padding:30px 7%;text-align:center}
 </section>
 
 <section class="slide">
-  <div class="section-head">
-    <div>
-      <h2>Actores e instituciones</h2>
-      <p class="subtitle">Haz clic en cada tarjeta para ampliar el rol.</p>
-    </div>
-  </div>
+  <div class="section-head"><div>
+    <h2>Actores e instituciones</h2>
+    <p class="subtitle">Haz clic en cada tarjeta para ampliar el rol y consulta los principales países involucrados.</p>
+  </div></div>
   <div class="grid">
     <article class="card role" onclick="alert('OPEP: organización clave. Sus miembros redujeron la producción y elevaron el precio del petróleo como medida de presión política.')"><h3>OPEP</h3><p>Actor central del mercado petrolero.</p></article>
     <article class="card role" onclick="alert('OAPEC y países árabes: desempeñaron un papel central en el embargo contra Estados Unidos y otros países que apoyaban a Israel.')"><h3>OAPEC</h3><p>Embargo petrolero y presión política.</p></article>
@@ -248,50 +260,149 @@ footer{background:var(--navy);color:#dcecf8;padding:30px 7%;text-align:center}
     <article class="card role" onclick="alert('Bancos internacionales: recibieron parte de los petrodólares acumulados por exportadores y canalizaron esos fondos mediante préstamos a otros países.')"><h3>Bancos internacionales</h3><p>Reciclaje de petrodólares.</p></article>
     <article class="card role" onclick="alert('ONU: estuvo vinculada al contexto político de la crisis, especialmente por la Guerra de Yom Kipur que antecedió al embargo.')"><h3>ONU</h3><p>Contexto político internacional.</p></article>
   </div>
+
+  <h3 class="subhead">Principales países involucrados</h3>
+  <div class="grid">
+    <article class="card">
+      <h3>Países exportadores y promotores del embargo</h3>
+      <p>A través de la OAPEC y la OPEP.</p>
+      <ul class="country-list">
+        <li>Arabia Saudita</li><li>Kuwait</li><li>Emiratos Árabes Unidos</li><li>Catar</li>
+        <li>Libia</li><li>Argelia</li><li>Egipto</li><li>Siria</li>
+      </ul>
+    </article>
+    <article class="card">
+      <h3>Países afectados directamente por el embargo</h3>
+      <ul class="country-list">
+        <li>Estados Unidos</li><li>Canadá</li><li>Reino Unido</li><li>Japón</li>
+        <li>Países Bajos</li><li>Portugal</li><li>Sudáfrica</li><li>Rodesia (actual Zimbabue)</li>
+      </ul>
+    </article>
+  </div>
+  <div class="callout"><strong>Otras economías fuertemente afectadas:</strong> Alemania Occidental, Francia, Italia, Bélgica, España, Suecia y Suiza, debido a su dependencia energética y a las alteraciones del comercio internacional.</div>
   <div class="callout">El Eje 1 señala que el sistema financiero internacional está compuesto por bancos centrales, organizaciones supranacionales y entidades financieras, y que canaliza recursos entre ahorro e inversión.</div>
 </section>
-
 <section class="slide">
-  <div class="section-head">
-    <div>
-      <h2>Indicadores económicos</h2>
-      <p class="subtitle">Los cambios más relevantes muestran cómo un shock energético se transmitió a toda la economía.</p>
-    </div>
-  </div>
+  <div class="section-head"><div>
+    <h2>Indicadores económicos</h2>
+    <p class="subtitle">Análisis de datos de la crisis del petróleo: inflación, tasas de interés, tipo de cambio y crecimiento económico.</p>
+  </div></div>
+
   <div class="grid">
-    <article class="card"><h3>Inflación</h3><div class="stat">2 dígitos</div><p>En la segunda mitad de 1973 la inflación en los países industriales llegó a niveles de dos dígitos, según el material de trabajo.</p></article>
-    <article class="card"><h3>Precio del petróleo</h3><div class="stat">≈ $3 → $12</div><p>El precio del barril se cuadruplicó de golpe, elevando los costos energéticos y productivos.</p></article>
-    <article class="card"><h3>Producción</h3><div class="stat">1974–75</div><p>Los países industriales experimentaron una fuerte caída de la producción durante la recesión internacional.</p></article>
-    <article class="card"><h3>Desempleo</h3><div class="stat">↑</div><p>El deterioro de la producción afectó los mercados laborales; el promedio de desempleo de 1974–1976 fue aproximadamente 1 punto porcentual superior al de 1971–1973.</p></article>
+    <article class="card"><h3>Inflación</h3><div class="stat">↑ fuerte</div><p>La crisis petrolera provocó una fuerte aceleración de la inflación mundial debido al incremento de los costes energéticos.</p></article>
+    <article class="card"><h3>Precio del petróleo</h3><div class="stat">US$2,90 → US$11,65</div><p>Entre octubre de 1973 y enero de 1974, el precio aumentó cerca de 300 %, afectando transporte, industria y producción.</p></article>
+    <article class="card"><h3>Tasas de interés</h3><div class="stat">7,0% → 12,9%</div><p>En EE. UU., la tasa aproximada pasó de 7,0 % en 1973 a un pico de 12,9 % en julio de 1974.</p></article>
+    <article class="card"><h3>Crecimiento económico</h3><div class="stat">1974–1975</div><p>La mayoría de las economías desarrolladas entró en recesión después del embargo petrolero.</p></article>
   </div>
-  <div class="chart" aria-label="Representación visual del aumento del precio del petróleo">
-    <div class="bar-wrap"><div class="bar" style="height:55px"></div><div class="bar-label">Antes<br>≈ US$3</div></div>
-    <div class="bar-wrap"><div class="bar" style="height:220px"></div><div class="bar-label">Después<br>≈ US$12</div></div>
-  </div>
-  <div class="callout"><strong>Justificación:</strong> el petróleo era un insumo esencial para transporte y producción. Su encarecimiento elevó costos, precios y déficits de los países importadores, al tiempo que debilitó producción y consumo.</div>
-</section>
 
-<section class="slide">
-  <div class="section-head">
-    <div>
-      <h2>Impactos y consecuencias</h2>
-      <p class="subtitle">La crisis energética se convirtió en un fenómeno comercial, financiero y macroeconómico.</p>
-    </div>
+  <h3 class="subhead">1. Inflación</h3>
+  <div class="card">
+    <p>La crisis petrolera provocó una fuerte aceleración de la inflación mundial debido al incremento de los costes energéticos. El petróleo pasó de aproximadamente <strong>US$2,90 por barril a US$11,65 por barril entre octubre de 1973 y enero de 1974</strong>, lo que representó una subida cercana al 300 %. Este aumento afectó directamente al transporte, la industria y la producción de bienes, trasladándose rápidamente a los precios al consumidor.</p>
   </div>
+  <div class="table-wrap"><table class="data-table">
+    <thead><tr><th>País</th><th>1972</th><th>1974</th></tr></thead>
+    <tbody>
+      <tr><td><strong>EE. UU.</strong></td><td>3,4%</td><td>11%</td></tr>
+      <tr><td><strong>Reino Unido</strong></td><td>7,1%</td><td>16%</td></tr>
+      <tr><td><strong>Japón</strong></td><td>4,9%</td><td>23,2%</td></tr>
+      <tr><td><strong>Alemania occidental</strong></td><td>5,5%</td><td>7,0%</td></tr>
+    </tbody>
+  </table></div>
+  <div class="card"><p>El impacto fue especialmente severo en Japón debido a su gran dependencia del petróleo importado. La combinación de alta inflación y bajo crecimiento económico dio origen al fenómeno conocido como <strong>estanflación</strong>, que desafió las políticas económicas tradicionales.</p></div>
+  <div class="callout analysis"><strong>Análisis:</strong> La inflación causada por la crisis de 1973 demostró que los shocks de oferta pueden afectar gravemente la estabilidad económica mundial. Los bancos centrales descubrieron que combatir la inflación mediante políticas monetarias restrictivas podía agravar simultáneamente la desaceleración económica.</div>
+
+  <h3 class="subhead">2. Tasa de interés</h3>
+  <div class="card"><p>Ante el aumento de la inflación, los bancos centrales comenzaron a endurecer sus políticas monetarias para contener el crecimiento de los precios.</p></div>
+  <div class="table-wrap"><table class="data-table">
+    <thead><tr><th>EE. UU. — Año</th><th>Tasa de interés aproximada</th></tr></thead>
+    <tbody>
+      <tr><td><strong>1973</strong></td><td>7,0%</td></tr>
+      <tr><td><strong>1974</strong></td><td>9,7%</td></tr>
+      <tr><td><strong>Julio 1974 (pico)</strong></td><td>12,9%</td></tr>
+    </tbody>
+  </table></div>
+  <div class="card">
+    <p>La Reserva Federal aumentó progresivamente los tipos de interés para controlar la inflación. Sin embargo, esto encareció el crédito, redujo la inversión empresarial y contribuyó a la recesión económica.</p>
+    <h3>Consecuencias financieras</h3>
+    <ul><li>Disminución de la inversión privada.</li><li>Menor acceso al crédito.</li><li>Aumento del coste de financiación para gobiernos y empresas.</li><li>Incremento de la deuda externa para muchos países en desarrollo.</li></ul>
+    <h3>Relación con América Latina</h3>
+    <p>Los bancos internacionales utilizaron los petrodólares depositados por los países exportadores para conceder préstamos masivos a economías latinoamericanas. Cuando las tasas de interés continuaron aumentando en la segunda mitad de los años setenta y principios de los ochenta, muchos países tuvieron dificultades para pagar sus obligaciones, contribuyendo a la crisis de deuda latinoamericana.</p>
+  </div>
+  <div class="callout analysis"><strong>Análisis:</strong> La subida de las tasas de interés demuestra cómo una crisis energética puede transformarse en una crisis financiera global. El petróleo elevó la inflación y la respuesta de los bancos centrales terminó afectando la inversión, el empleo y la estabilidad financiera internacional.</div>
+
+  <h3 class="subhead">3. Tipo de cambio</h3>
+  <div class="card">
+    <h3>Relación entre Bretton Woods y la crisis</h3>
+    <p>En agosto de 1971, el presidente Richard Nixon suspendió la convertibilidad del dólar en oro, lo que provocó el colapso del sistema de tipos de cambio fijos de Bretton Woods. En 1973 los principales países comenzaron a adoptar tipos de cambio flotantes.</p>
+    <h3>Efectos sobre la crisis petrolera</h3>
+    <ul><li>El petróleo seguía cotizándose en dólares.</li><li>La devaluación del dólar reducía los ingresos reales de los exportadores.</li><li>Los países de la OPEP presionaron para elevar los precios del crudo y compensar la pérdida de valor del dólar.</li><li>Aumentó la volatilidad de los mercados cambiarios internacionales.</li></ul>
+    <p>La propia Federal Reserve History reconoce que la depreciación del dólar fue un factor importante que incentivó los aumentos de precios aplicados por la OPEP.</p>
+  </div>
+  <div class="callout analysis"><strong>Análisis:</strong> La crisis de 1973 no fue únicamente una crisis energética. También representó una transición hacia el sistema monetario internacional moderno basado en tipos de cambio flexibles. La interacción entre petróleo, dólar y mercados financieros mostró que las materias primas estratégicas pueden tener un enorme impacto sobre las monedas y los flujos financieros globales.</div>
+
+  <h3 class="subhead">4. Crecimiento económico</h3>
+  <div class="card"><p>Antes de la crisis, los países industrializados experimentaban fuertes tasas de crecimiento. Sin embargo, tras el embargo petrolero, la mayoría de las economías desarrolladas entró en recesión.</p></div>
+  <div class="table-wrap"><table class="data-table">
+    <thead><tr><th>País</th><th>1973</th><th>1975</th></tr></thead>
+    <tbody>
+      <tr><td><strong>EE. UU.</strong></td><td>5,6%</td><td>-0,2%</td></tr>
+      <tr><td><strong>Alemania Occidental</strong></td><td>5,3%</td><td>-1,0%</td></tr>
+      <tr><td><strong>Japón</strong></td><td>8,0%</td><td>-1,2%</td></tr>
+      <tr><td><strong>Reino Unido</strong></td><td>5,0%</td><td>-1,5%</td></tr>
+    </tbody>
+  </table></div>
+  <div class="card">
+    <p>La actividad económica disminuyó significativamente debido al incremento de los costes energéticos, la caída del consumo y la reducción de la inversión.</p>
+    <h3>Impacto mundial</h3>
+    <ul><li>Recesión internacional entre 1974 y 1975.</li><li>Aumento del desempleo.</li><li>Disminución de la producción industrial.</li><li>Menor crecimiento a largo plazo.</li></ul>
+    <p>Los países más afectados fueron aquellos altamente dependientes del petróleo importado, como Japón, Estados Unidos y la mayoría de los países de Europa Occidental.</p>
+  </div>
+
+  <div class="chart" aria-label="Representación visual del aumento del precio del petróleo">
+    <div class="bar-wrap"><div class="bar" style="height:55px"></div><div class="bar-label">Oct. 1973<br>≈ US$2,90</div></div>
+    <div class="bar-wrap"><div class="bar" style="height:220px"></div><div class="bar-label">Ene. 1974<br>≈ US$11,65</div></div>
+  </div>
+  <div class="callout"><strong>Lectura general:</strong> los indicadores muestran cómo un shock energético se transmitió desde el precio del petróleo hacia la inflación, las tasas de interés, los mercados cambiarios, la inversión, el empleo y el crecimiento económico.</div>
+</section>
+<section class="slide">
+  <div class="section-head"><div>
+    <h2>Impactos y consecuencias</h2>
+    <p class="subtitle">La crisis energética se convirtió en un fenómeno comercial, financiero y macroeconómico.</p>
+  </div></div>
   <div class="grid">
     <article class="card"><h3>Comercio internacional</h3><ul><li>Mayor costo de las importaciones de petróleo.</li><li>Aumento de costos de transporte y producción.</li><li>Incremento de precios de mercancías.</li><li>Déficits comerciales en países importadores.</li></ul></article>
     <article class="card"><h3>Sistema financiero</h3><ul><li>Acumulación de petrodólares en países exportadores.</li><li>Depósitos en bancos de EE. UU. y Europa.</li><li>Expansión del crédito a países en desarrollo.</li><li>Mayor endeudamiento externo.</li></ul></article>
     <article class="card"><h3>Consecuencias económicas</h3><ul><li>Inflación elevada.</li><li>Recesión 1974–1975.</li><li>Estanflación.</li><li>Aumento del desempleo.</li><li>Déficits de balanza de pagos.</li></ul></article>
     <article class="card"><h3>Efectos posteriores</h3><ul><li>Mayor búsqueda de eficiencia energética.</li><li>Desarrollo de fuentes alternativas.</li><li>Crecimiento de la deuda de países en desarrollo.</li><li>Contribución a problemas de deuda de los años 80.</li></ul></article>
   </div>
-  <div class="callout"><strong>Conclusión:</strong> la crisis mostró la interdependencia entre energía, comercio y finanzas internacionales. Los petrodólares se reciclaron mediante el sistema bancario y ayudaron a ampliar el crédito internacional.</div>
+
+  <h3 class="subhead">Conclusión general</h3>
+  <div class="card">
+    <p>La crisis del petróleo de 1973 constituyó uno de los acontecimientos más importantes en la evolución del sistema financiero internacional contemporáneo. Aunque se originó por motivos geopolíticos vinculados a la Guerra de Yom Kipur, sus efectos trascendieron el ámbito energético y transformaron profundamente la economía mundial.</p>
+    <p>El incremento de los precios del petróleo provocó fuertes presiones inflacionarias, redujo el crecimiento económico, elevó las tasas de interés y evidenció la vulnerabilidad de los países dependientes de las importaciones energéticas.</p>
+    <p>Además, la acumulación de petrodólares y su posterior reciclaje mediante los bancos internacionales modificó los flujos financieros globales y contribuyó indirectamente a la crisis de deuda de América Latina durante los años ochenta.</p>
+    <p>La crisis también consolidó el sistema de tipos de cambio flexibles surgido tras la caída de Bretton Woods, convirtiéndose en un punto de inflexión para el funcionamiento del sistema financiero internacional moderno.</p>
+  </div>
+  <div class="callout"><strong>Idea clave:</strong> la crisis mostró la interdependencia entre energía, comercio, monedas y finanzas internacionales. Un shock originado en el mercado petrolero pudo transmitirse rápidamente a la inflación, el crédito, la producción y la deuda internacional.</div>
+
   <div class="card refs">
     <h3>Referencias</h3>
     <p>Fondo Monetario Internacional. (2022). <i>El FMI: datos básicos</i>.</p>
     <p>Ospina Pava, J. (2022). <i>Sistema financiero internacional: Eje 1 – Conceptualicemos</i>. Fundación Universitaria del Área Andina.</p>
     <p>Historia del Departamento de Estado de Estados Unidos. (s. f.). <i>Oil Embargo, 1973–1974</i>.</p>
     <p>Material de investigación del equipo. (s. f.). <i>Crisis del petróleo de 1973</i>.</p>
+    <p>Wikipedia. (s. f.). <i>Crisis del petróleo de 1973</i>. <a href="https://es.wikipedia.org/wiki/Crisis_del_petr%C3%B3leo_de_1973" target="_blank" rel="noopener noreferrer">https://es.wikipedia.org/wiki/Crisis_del_petr%C3%B3leo_de_1973</a></p>
+    <p>Office of the Historian, U.S. Department of State. (s. f.). <i>Oil Embargo, 1973–1974</i>. <a href="https://history.state.gov/milestones/1969-1976/oil-embargo" target="_blank" rel="noopener noreferrer">https://history.state.gov/milestones/1969-1976/oil-embargo</a></p>
+    <p>Banco Central Europeo. (2000). <i>Lessons to be drawn from the oil price shocks of the 1970s and early 1980s</i>. <a href="https://www.ecb.europa.eu/pub/pdf/other/mb200011_focus02.en.pdf" target="_blank" rel="noopener noreferrer">https://www.ecb.europa.eu/pub/pdf/other/mb200011_focus02.en.pdf</a></p>
+    <p>Eco3min. (s. f.). <i>El Choque del Petróleo de 1973: el cambio hacia la estanflación</i>. <a href="https://eco3min.fr/en/macro-financial-regimes/crisis-hub/1973-oil-shock/" target="_blank" rel="noopener noreferrer">https://eco3min.fr/en/macro-financial-regimes/crisis-hub/1973-oil-shock/</a></p>
+    <p>Owen Analytics. (2026). <i>Crisis del petróleo de 1973-74 – Verificación de hechos: impactos en la inflación, tipos de interés, acciones, divisas, oro. ¿Entonces-v-Ahora?</i>. <a href="https://www.owenanalytics.com.au/2026apr06-1973-4-oil-crisis" target="_blank" rel="noopener noreferrer">https://www.owenanalytics.com.au/2026apr06-1973-4-oil-crisis</a></p>
+    <p>Starke, P., Kaasch, A. y van Hooren, F. (2013). <i>Los choques petroleros de 1973 y 1979: el keynesianismo y más allá</i>. Springer Nature. <a href="https://link.springer.com/chapter/10.1057/9781137314840_4" target="_blank" rel="noopener noreferrer">https://link.springer.com/chapter/10.1057/9781137314840_4</a></p>
+    <p>Federal Reserve History. (s. f.). <i>Choque del petróleo de 1973-74</i>. <a href="https://www.federalreservehistory.org/essays/oil-shock-of-1973-74" target="_blank" rel="noopener noreferrer">https://www.federalreservehistory.org/essays/oil-shock-of-1973-74</a></p>
   </div>
+
+    <div class="callout" style="margin-top:14px">
+      <strong>Nota:</strong> Se utilizó IA con el fin de encontrar información en el navegador, además se utilizó para encontrar fragilidad e información deficiente y qué puntos o temas debíamos mejorar. Se utilizó para corregir errores ortográficos.
+    </div>
 </section>
 </main>
 
