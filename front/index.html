@@ -1,286 +1,313 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SIGR — Gestión de restaurante</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Crisis del Petróleo de 1973 | Sistema Financiero Internacional</title>
+<style>
+:root{
+  --navy:#4A2545; --blue:#0B525B; --cyan:#06A6A6; --orange:#D96C4A;
+  --cream:#F6E9D7; --ink:#2D2630; --muted:#6F6575; --white:#FFFDF9;
+  --mustard:#E5B94B; --sand:#D9B77A;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;max-width:100%}
+img,iframe,video{max-width:100%}
+
+.cover{
+  min-height:100svh;
+  background:var(--cream);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:clamp(24px,5vw,55px) clamp(16px,5vw,7%);
+  position:relative;
+  overflow:hidden;
+}
+.cover:before,.cover:after{content:"";position:absolute;border-radius:50%;opacity:.16;pointer-events:none}
+.cover:before{width:min(430px,80vw);height:min(430px,80vw);background:var(--orange);right:-150px;top:-150px}
+.cover:after{width:min(350px,70vw);height:min(350px,70vw);background:var(--cyan);left:-140px;bottom:-130px}
+.cover-box{
+  width:min(920px,100%);
+  background:var(--white);
+  border-radius:clamp(18px,3vw,28px);
+  padding:clamp(22px,4.5vw,48px);
+  box-shadow:0 18px 55px rgba(74,37,69,.14);
+  border-top:7px solid var(--orange);
+  position:relative;
+  z-index:1;
+  text-align:center;
+}
+.cover-title{
+  font-size:clamp(2.6rem,8.5vw,5.6rem);
+  line-height:1.05;
+  color:var(--navy);
+  margin:0 0 8px;
+  font-weight:900;
+  overflow-wrap:anywhere;
+}
+.cover-divider{height:1px;background:#eadfd5;margin:clamp(18px,3vw,28px) 0}
+.cover-info{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:22px;
+  text-align:center;
+}
+.cover-block{width:100%;background:var(--cream);border-radius:18px;padding:clamp(16px,3vw,20px);text-align:center;min-width:0}
+.cover-block h3{margin:0 0 12px;color:var(--blue)}
+.cover-block p{margin:0 0 14px}
+.cover-block p:last-child{margin-bottom:0}
+.members{list-style:none;padding:0;margin:0;text-align:center}
+.members li{padding:9px 0;border-bottom:1px solid rgba(74,37,69,.10);line-height:1.45;overflow-wrap:anywhere}
+.members li:last-child{border-bottom:0}
+.empty-name{color:#9a8e98;font-style:italic}
+
+.hero{
+  min-height:100svh;
+  background:linear-gradient(135deg,#4A2545 0%,#7B405D 43%,#0B525B 100%);
+  color:white;
+  display:flex;
+  align-items:center;
+  padding:clamp(40px,8vw,60px) clamp(18px,7%,7%);
+  position:relative;
+  overflow:hidden;
+}
+.hero:after{content:"";position:absolute;width:min(520px,90vw);height:min(520px,90vw);border-radius:50%;right:-170px;top:-170px;background:rgba(255,255,255,.08)}
+.hero-content{max-width:900px;position:relative;z-index:1;width:100%}
+.badge{display:inline-block;padding:8px 14px;border:1px solid rgba(255,255,255,.35);border-radius:999px;background:rgba(229,185,75,.18);font-size:clamp(.78rem,2.4vw,.9rem)}
+.hero h1{font-size:clamp(2.8rem,8vw,6.4rem);line-height:.95;margin:22px 0 18px;overflow-wrap:anywhere}
+.hero p{font-size:clamp(1rem,2.6vw,1.2rem);line-height:1.6;max-width:750px;color:#eaf7ff}
+.cta{display:inline-block;margin-top:18px;background:var(--orange);color:white;text-decoration:none;padding:14px 20px;border-radius:12px;font-weight:700;box-shadow:0 8px 25px rgba(0,0,0,.18)}
+
+nav{
+  position:sticky;top:0;z-index:20;
+  background:rgba(16,42,67,.96);
+  padding:10px 4%;
+  display:flex;gap:8px;
+  overflow-x:auto;overflow-y:hidden;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:thin;
+}
+nav button{border:0;background:transparent;color:#dcecf8;padding:11px 14px;border-radius:10px;cursor:pointer;white-space:nowrap;font-weight:700;flex:0 0 auto}
+nav::-webkit-scrollbar{height:6px}
+nav::-webkit-scrollbar-thumb{background:#4c7698;border-radius:20px}
+nav button:hover,nav button.active{background:#1677c8;color:#fff}
+
+main{max-width:1200px;margin:auto;padding:34px 5% 80px;width:100%}
+.slide{display:none;animation:fade .35s ease}
+.slide.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.section-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin:10px 0 24px}
+h2{font-size:clamp(1.55rem,4.5vw,2.2rem);margin:0;color:var(--navy);position:relative}
+h2:after{content:"";display:block;width:62px;height:5px;border-radius:5px;background:linear-gradient(90deg,var(--orange),var(--mustard));margin-top:9px}
+.subtitle{color:var(--muted);line-height:1.55}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:18px}
+.card{background:white;border-radius:18px;padding:clamp(16px,3vw,22px);box-shadow:0 8px 25px rgba(36,17,47,.10);border:1px solid #e7edf3;min-width:0}
+.card h3{margin-top:0;color:var(--blue)}
+.card p,.card li{line-height:1.55;color:#3e4b59}
+.timeline{display:grid;gap:12px;margin-top:22px}
+.event{display:grid;grid-template-columns:minmax(110px,120px) minmax(0,1fr);gap:18px;align-items:start}
+.year{font-weight:800;color:var(--orange);font-size:1.15rem;overflow-wrap:anywhere}
+.event-body{background:white;padding:17px 20px;border-radius:14px;border-left:5px solid var(--orange);box-shadow:0 5px 18px rgba(16,42,67,.07);min-width:0}
+.stat{font-size:clamp(1.5rem,4vw,2rem);font-weight:900;color:var(--navy);margin:4px 0}
+.small{font-size:.9rem;color:var(--muted)}
+.role{cursor:pointer}
+.role:hover{transform:translateY(-2px);transition:.2s}
+.chart{height:280px;display:flex;align-items:end;gap:18px;padding:20px;background:white;border-radius:18px;margin-top:18px}
+.bar-wrap{flex:1;text-align:center;min-width:0}
+.bar{background:linear-gradient(180deg,var(--orange),#f6b15c);border-radius:9px 9px 3px 3px;min-height:12px}
+.bar-label{font-size:.8rem;color:var(--muted);margin-top:7px}
+.callout{padding:clamp(14px,3vw,20px);border-radius:16px;background:linear-gradient(120deg,#e9f7fb,#fff4e8);border:1px solid #d8e9ef;margin:20px 0;overflow-wrap:anywhere}
+.refs{font-size:.92rem;line-height:1.7}
+footer{background:var(--navy);color:#dcecf8;padding:30px 7%;text-align:center}
+
+@media (max-width:900px){
+  .cover-info{grid-template-columns:1fr}
+  .hero:after{right:-220px;top:-220px}
+}
+
+@media (max-width:650px){
+  .event{grid-template-columns:1fr;gap:5px}
+  .section-head{display:block}
+  main{padding:25px 4% 60px}
+  .grid{grid-template-columns:1fr}
+  nav{padding:9px 10px}
+  nav button{font-size:.82rem;padding:10px 12px}
+  .chart{height:220px;gap:12px;padding:16px}
+  .cover-box{border-radius:22px}
+  .members li{padding:11px 0}
+}
+
+@media (max-width:420px){
+  .cover-title{font-size:clamp(2.1rem,12vw,3.2rem)}
+  .hero h1{font-size:clamp(2.15rem,12vw,3.4rem)}
+  .cta{width:100%;text-align:center}
+  .chart{height:190px}
+}
+</style>
 </head>
 <body>
-  <div class="app-bg" aria-hidden="true"></div>
 
-  <header class="site-header">
-    <div class="header-top">
-      <div class="brand">
-        <span class="brand-mark" aria-hidden="true">◆</span>
-        <div>
-          <h1 class="brand-title">SIGR</h1>
-          <p class="brand-tag" id="brand-subtitle">Gestión local (sin servidor)</p>
-        </div>
-      </div>
-      <div class="header-actions">
-        <span id="session-badge" class="session-badge hidden" aria-live="polite"></span>
-        <button
-          type="button"
-          class="cart-toggle"
-          id="cart-toggle"
-          aria-expanded="false"
-          aria-controls="cart-overlay"
-          title="Ver carrito"
-        >
-          <span class="visually-hidden">Abrir carrito del pedido</span>
-          <svg class="cart-toggle-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path
-              d="M6 6h15l-1.5 9h-12L6 6Zm0 0L5 3H2"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <circle cx="9" cy="20" r="1.5" fill="currentColor" />
-            <circle cx="17" cy="20" r="1.5" fill="currentColor" />
-          </svg>
-          <span class="cart-toggle-badge" id="cart-badge">0</span>
-        </button>
-      </div>
-    </div>
-    <nav class="main-nav" aria-label="Módulos SIGR">
-      <button type="button" class="nav-tab is-active" data-view="pedidos">Pedidos</button>
-      <button type="button" class="nav-tab" data-view="auth">Sesión</button>
-      <button type="button" class="nav-tab" data-view="menu-admin">Menú (CRUD)</button>
-      <button type="button" class="nav-tab" data-view="pedidos-live">Pedidos en vivo</button>
-      <button type="button" class="nav-tab" data-view="reservas">Reservas</button>
-      <button type="button" class="nav-tab" data-view="caja">Caja y reportes</button>
-    </nav>
-  </header>
+<section class="cover" id="portada">
+  <div class="cover-box">
+    <h1 class="cover-title">Crisis del Petróleo de 1973</h1>
+    <div class="cover-divider"></div>
 
-  <main class="layout layout-views">
-    <!-- Vista: pedidos (menú + carrito) -->
-    <section id="view-pedidos" class="view view-active" aria-labelledby="menu-heading">
-      <div class="menu-section">
-        <div class="menu-toolbar">
-          <h2 id="menu-heading" class="section-title">Menú</h2>
-          <div class="search-wrap">
-            <label for="search-input" class="visually-hidden">Buscar plato</label>
-            <input type="search" id="search-input" class="search-input" placeholder="Buscar plato…" autocomplete="off" />
-          </div>
-          <div class="category-filters" id="category-filters" role="group" aria-label="Filtrar por categoría"></div>
-        </div>
-        <div id="menu-grid" class="menu-grid"></div>
-        <p id="menu-empty" class="menu-empty hidden" role="status">No hay platos que coincidan con tu búsqueda.</p>
+    <div class="cover-info">
+      <div class="cover-block">
+        <h3>Integrantes</h3>
+        <ol class="members">
+          <li>Xiomara Rendón Cano <span class="small">— Grupo 602</span></li>
+          <li>Jhon Gezeer Andrade Fernández <span class="small">— Grupo 601</span></li>
+          <li>Laura Catalina Castaño Herazo <span class="small">— Grupo 603</span></li>
+          <li>Noor Karolina García Rodríguez <span class="small">— Grupo 601</span></li>
+          <li>Erika Alexandra Calderon Valero <span class="small">— Grupo 601</span></li>
+        </ol>
       </div>
-    </section>
 
-    <!-- Vista: autenticación (roles locales) -->
-    <section id="view-auth" class="view hidden" aria-labelledby="auth-heading">
-      <h2 id="auth-heading" class="section-title">Sesión y roles</h2>
-      <p class="view-lead">Identificación <strong>local</strong> (demo): no hay contraseña ni servidor. Sirve para etiquetar el uso del sistema como cliente, mesero o administrador.</p>
-      <div class="panel">
-        <form id="auth-form" class="auth-form">
-          <label class="field">
-            <span>Nombre o alias</span>
-            <input type="text" id="auth-name" required placeholder="Ej. David" autocomplete="username" />
-          </label>
-          <label class="field">
-            <span>Rol</span>
-            <select id="auth-role" required>
-              <option value="cliente">Cliente</option>
-              <option value="mesero">Mesero</option>
-              <option value="administrador">Administrador</option>
-            </select>
-          </label>
-          <button type="submit" class="btn btn-primary">Guardar sesión</button>
-        </form>
-        <div id="auth-current" class="auth-current hidden"></div>
-        <button type="button" class="btn btn-ghost btn-mt" id="auth-clear">Cerrar sesión</button>
-      </div>
-    </section>
-
-    <!-- Vista: CRUD menú -->
-    <section id="view-menu-admin" class="view hidden" aria-labelledby="crud-heading">
-      <h2 id="crud-heading" class="section-title">Menú digital (CRUD)</h2>
-      <p class="view-lead">Alta, edición y borrado de platos y categorías. Los datos se guardan en este navegador (<code>localStorage</code>). Puedes restaurar el menú inicial.</p>
-      <div class="panel panel-actions">
-        <button type="button" class="btn btn-ghost" id="menu-reset-seed">Restaurar menú por defecto</button>
-        <button type="button" class="btn btn-primary" id="menu-refresh-views">Aplicar y volver a cargar menú pedidos</button>
-      </div>
-      <div class="panel">
-        <h3 class="panel-title">Añadir plato</h3>
-        <form id="dish-add-form" class="grid-form">
-          <label class="field"><span>Nombre</span><input type="text" id="dish-new-name" required /></label>
-          <label class="field"><span>Descripción</span><input type="text" id="dish-new-desc" /></label>
-          <label class="field"><span>Precio (€)</span><input type="number" id="dish-new-price" min="0" step="0.01" required /></label>
-          <label class="field"><span>Categoría</span><input type="text" id="dish-new-cat" list="category-datalist" required placeholder="Ej. Entradas" /></label>
-          <label class="field field-span-2"><span>URL de imagen</span><input type="url" id="dish-new-img" placeholder="https://…" /></label>
-          <div class="field-span-2"><button type="submit" class="btn btn-primary">Añadir plato</button></div>
-        </form>
-        <datalist id="category-datalist"></datalist>
-      </div>
-      <div class="panel">
-        <h3 class="panel-title">Platos actuales</h3>
-        <div class="table-wrap">
-          <table class="data-table" id="menu-admin-table">
-            <thead>
-              <tr>
-                <th>Plato</th>
-                <th>Categoría</th>
-                <th>Precio</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody id="menu-admin-tbody"></tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- Vista: pedidos en vivo -->
-    <section id="view-pedidos-live" class="view hidden" aria-labelledby="live-heading">
-      <h2 id="live-heading" class="section-title">Registro y seguimiento de pedidos</h2>
-      <p class="view-lead">Listado de pedidos confirmados. El estado se actualiza en local; en producción real iría contra un backend. Puedes pulsar <strong>Actualizar</strong> para simular refresco.</p>
-      <div class="panel panel-actions">
-        <button type="button" class="btn btn-primary" id="orders-refresh">Actualizar lista</button>
-      </div>
-      <div class="panel">
-        <div class="table-wrap">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Fecha</th>
-                <th>Cliente</th>
-                <th>Total</th>
-                <th>Estado</th>
-              </tr>
-            </thead>
-            <tbody id="orders-live-tbody"></tbody>
-          </table>
-        </div>
-        <p id="orders-live-empty" class="view-lead hidden">Aún no hay pedidos confirmados.</p>
-      </div>
-    </section>
-
-    <!-- Vista: reservas -->
-    <section id="view-reservas" class="view hidden" aria-labelledby="res-heading">
-      <h2 id="res-heading" class="section-title">Reservas</h2>
-      <p class="view-lead">Reservas por fecha y hora guardadas solo en este navegador.</p>
-      <div class="panel">
-        <h3 class="panel-title">Nueva reserva</h3>
-        <form id="reserva-form" class="grid-form">
-          <label class="field"><span>Nombre</span><input type="text" id="res-nombre" required /></label>
-          <label class="field"><span>Fecha</span><input type="date" id="res-fecha" required /></label>
-          <label class="field"><span>Hora</span><input type="time" id="res-hora" required /></label>
-          <label class="field"><span>Comensales</span><input type="number" id="res-comensales" min="1" value="2" required /></label>
-          <label class="field field-span-2"><span>Notas</span><input type="text" id="res-notas" placeholder="Opcional" /></label>
-          <div class="field-span-2"><button type="submit" class="btn btn-primary">Guardar reserva</button></div>
-        </form>
-      </div>
-      <div class="panel">
-        <h3 class="panel-title">Reservas guardadas</h3>
-        <ul class="reserva-list" id="reserva-list"></ul>
-        <p id="reserva-empty" class="view-lead hidden">No hay reservas.</p>
-      </div>
-    </section>
-
-    <!-- Vista: caja -->
-    <section id="view-caja" class="view hidden" aria-labelledby="caja-heading">
-      <h2 id="caja-heading" class="section-title">Cierre de caja y reportes</h2>
-      <p class="view-lead">Totales por día a partir de pedidos confirmados. El cierre queda registrado como instantánea en <code>localStorage</code>.</p>
-      <div class="panel">
-        <label class="field inline-field">
-          <span>Día a analizar</span>
-          <input type="date" id="caja-fecha" />
-        </label>
-        <button type="button" class="btn btn-primary" id="caja-calc">Calcular totales del día</button>
-        <div id="caja-resumen" class="caja-resumen hidden"></div>
-        <button type="button" class="btn btn-ghost btn-mt" id="caja-cerrar">Registrar cierre del día</button>
-      </div>
-      <div class="panel">
-        <h3 class="panel-title">Cierres registrados</h3>
-        <div class="table-wrap">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Día</th>
-                <th>Total</th>
-                <th>Pedidos</th>
-                <th>Registrado</th>
-              </tr>
-            </thead>
-            <tbody id="caja-cierres-tbody"></tbody>
-          </table>
-        </div>
-        <p id="caja-cierres-empty" class="view-lead hidden">Sin cierres aún.</p>
-      </div>
-    </section>
-  </main>
-
-  <!-- Carrito (modal) -->
-  <div class="modal-overlay hidden" id="cart-overlay" role="dialog" aria-modal="true" aria-labelledby="cart-modal-title">
-    <div class="modal modal-cart">
-      <button type="button" class="modal-close" id="cart-modal-close" aria-label="Cerrar carrito">×</button>
-      <h2 id="cart-modal-title" class="modal-title modal-cart-title">Tu pedido</h2>
-      <p class="cart-empty-msg" id="cart-empty">Aún no has añadido platos. Explora el menú.</p>
-      <ul class="cart-list" id="cart-list"></ul>
-      <div class="cart-footer">
-        <div class="cart-total-row">
-          <span>Total</span>
-          <strong id="cart-total">0,00 €</strong>
-        </div>
-        <button type="button" class="btn btn-primary btn-block" id="btn-checkout" disabled>Continuar</button>
+      <div class="cover-block">
+        <h3>Información académica</h3>
+        <p><strong>Asignatura:</strong><br>Sistema Financiero Internacional</p>
+        <p><strong>Profesora:</strong><br>Mayra Liliana Tellez Suárez</p>
+        <p><strong>Universidad:</strong><br>Fundación Universitaria del Área Andina</p>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- Checkout -->
-  <div class="modal-overlay hidden" id="checkout-overlay" role="dialog" aria-modal="true" aria-labelledby="checkout-title">
-    <div class="modal">
-      <button type="button" class="modal-close" id="checkout-close" aria-label="Cerrar">×</button>
-      <h2 id="checkout-title" class="modal-title">Datos del pedido</h2>
-      <form id="checkout-form" class="checkout-form">
-        <label class="field">
-          <span>Nombre del cliente</span>
-          <input type="text" name="customer" id="customer-name" required placeholder="Ej. María López" />
-        </label>
-        <fieldset class="field field-radio">
-          <legend>¿Dónde servimos?</legend>
-          <label class="radio-row">
-            <input type="radio" name="service" value="mesa" checked />
-            <span>Mesa en el restaurante</span>
-          </label>
-          <label class="radio-row">
-            <input type="radio" name="service" value="domicilio" />
-            <span>Domicilio</span>
-          </label>
-        </fieldset>
-        <label class="field" id="field-mesa">
-          <span>Número de mesa</span>
-          <input type="text" name="mesa" id="mesa-input" inputmode="numeric" placeholder="Ej. 12" required />
-        </label>
-        <label class="field hidden" id="field-direccion">
-          <span>Dirección de entrega</span>
-          <textarea name="direccion" id="direccion-input" rows="2" placeholder="Calle, número, ciudad…"></textarea>
-        </label>
-        <div class="modal-actions">
-          <button type="button" class="btn btn-ghost" id="checkout-cancel">Volver</button>
-          <button type="submit" class="btn btn-primary">Confirmar pedido</button>
-        </div>
-      </form>
+<header class="hero">
+  <div class="hero-content">
+    <span class="badge">Eje 1 · Sistema Financiero Internacional</span>
+    <h1>Crisis del Petróleo de 1973</h1>
+    <p>Una presentación digital interactiva sobre las causas, actores institucionales, indicadores económicos y efectos de una de las grandes crisis energéticas y económicas del siglo XX.</p>
+  </div>
+</header>
+
+<nav id="presentacion" aria-label="Temas principales">
+  <button class="active" onclick="go(0)">01 · Crisis</button>
+  <button onclick="go(1)">02 · Línea de tiempo</button>
+  <button onclick="go(2)">03 · Actores</button>
+  <button onclick="go(3)">04 · Indicadores</button>
+  <button onclick="go(4)">05 · Impactos</button>
+</nav>
+
+<main>
+<section class="slide active">
+  <div class="section-head">
+    <div>
+      <h2>¿Qué ocurrió?</h2>
+      <p class="subtitle">La crisis comenzó en octubre de 1973 con el embargo petrolero de países árabes de la OPEP contra Estados Unidos y otros países que apoyaban a Israel durante la guerra de Yom Kipur.</p>
     </div>
   </div>
+  <div class="grid">
+    <article class="card"><h3>Embargo petrolero</h3><p>La reducción de la producción y el embargo utilizaron el petróleo como instrumento de presión política.</p></article>
+    <article class="card"><h3>Dependencia energética</h3><p>Las economías industrializadas dependían fuertemente del petróleo, especialmente para transporte y producción.</p></article>
+    <article class="card"><h3>Shock de precios</h3><p>El precio del petróleo pasó de cerca de US$3 a alrededor de US$12 por barril, elevando los costos de la economía mundial.</p></article>
+    <article class="card"><h3>Estanflación</h3><p>La crisis combinó inflación elevada, bajo crecimiento y aumento del desempleo.</p></article>
+  </div>
+  <div class="callout"><strong>Conexión con el Eje 1:</strong> el material explica que la primera crisis del petróleo de 1973 marcó el final de la etapa de auge de 1945–1973 y estuvo relacionada con cambios en el sistema monetario internacional.</div>
+  <h3>Video complementario</h3>
+  <div class="card">
+    <p>Para ver el video sobre la crisis del petróleo de 1973:</p>
+    <a class="cta" href="https://youtube.com/watch?v=z-ASHIg4eeE&si=Q_LQ3jYgSeDavBgZ" target="_blank" rel="noopener noreferrer">▶ Ver video en YouTube</a>
+  </div>
+</section>
 
-  <!-- Resumen -->
-  <div class="modal-overlay hidden" id="summary-overlay" role="dialog" aria-modal="true" aria-labelledby="summary-title">
-    <div class="modal modal-wide">
-      <h2 id="summary-title" class="modal-title">Pedido confirmado</h2>
-      <div id="summary-content" class="summary-content"></div>
-      <button type="button" class="btn btn-primary btn-block" id="summary-done">Entendido</button>
+<section class="slide">
+  <div class="section-head">
+    <div>
+      <h2>Línea de tiempo</h2>
+      <p class="subtitle">Causas → shock energético → transmisión económica → cambios institucionales.</p>
     </div>
   </div>
+  <div class="timeline">
+    <div class="event"><div class="year">1945–finales 60</div><div class="event-body"><b>Dependencia creciente</b><br>Occidente y Japón aumentan fuertemente su consumo de petróleo. En EE. UU. el consumo llegó a duplicarse entre 1945 y 1974.</div></div>
+    <div class="event"><div class="year">15 ago. 1971</div><div class="event-body"><b>Fin del patrón oro</b><br>Estados Unidos abandona la convertibilidad del dólar en oro, poniendo fin al sistema de Bretton Woods.</div></div>
+    <div class="event"><div class="year">1973</div><div class="event-body"><b>Guerra de Yom Kipur y embargo</b><br>Países árabes productores utilizan el petróleo como instrumento de presión política.</div></div>
+    <div class="event"><div class="year">Sep. 1973–ene. 1974</div><div class="event-body"><b>Explosión del precio</b><br>El precio del petróleo aumenta aproximadamente tres veces en ese periodo; el precio pasó de cerca de US$3 a US$12 por barril.</div></div>
+    <div class="event"><div class="year">1974–1975</div><div class="event-body"><b>Recesión internacional</b><br>La producción y el consumo se debilitan, mientras la inflación permanece elevada.</div></div>
+    <div class="event"><div class="year">1974 en adelante</div><div class="event-body"><b>Nueva cooperación energética</b><br>Se crea la Agencia Internacional de Energía para coordinar políticas energéticas de los países consumidores y reducir la dependencia petrolera.</div></div>
+  </div>
+</section>
 
-  <script src="script.js"></script>
+<section class="slide">
+  <div class="section-head">
+    <div>
+      <h2>Actores e instituciones</h2>
+      <p class="subtitle">Haz clic en cada tarjeta para ampliar el rol.</p>
+    </div>
+  </div>
+  <div class="grid">
+    <article class="card role" onclick="alert('OPEP: organización clave. Sus miembros redujeron la producción y elevaron el precio del petróleo como medida de presión política.')"><h3>OPEP</h3><p>Actor central del mercado petrolero.</p></article>
+    <article class="card role" onclick="alert('OAPEC y países árabes: desempeñaron un papel central en el embargo contra Estados Unidos y otros países que apoyaban a Israel.')"><h3>OAPEC</h3><p>Embargo petrolero y presión política.</p></article>
+    <article class="card role" onclick="alert('Estados Unidos: uno de los principales países afectados. Enfrentó escasez de combustible, filas en gasolineras e inflación.')"><h3>Estados Unidos</h3><p>País importador afectado.</p></article>
+    <article class="card role" onclick="alert('Europa Occidental y Japón: economías dependientes del petróleo importado que aplicaron medidas de ahorro y racionamiento.')"><h3>Europa Occidental y Japón</h3><p>Grandes consumidores e importadores.</p></article>
+    <article class="card role" onclick="alert('Grandes petroleras internacionales: Exxon, Shell, BP y Texaco participaron en producción, distribución y comercialización; la crisis modificó su relación con los productores.')"><h3>Compañías petroleras</h3><p>Producción, distribución y comercialización.</p></article>
+    <article class="card role" onclick="alert('AIE: creada en 1974 como consecuencia de la crisis para coordinar políticas energéticas de países consumidores.')"><h3>Agencia Internacional de Energía</h3><p>Coordinación energética posterior a la crisis.</p></article>
+    <article class="card role" onclick="alert('Bancos internacionales: recibieron parte de los petrodólares acumulados por exportadores y canalizaron esos fondos mediante préstamos a otros países.')"><h3>Bancos internacionales</h3><p>Reciclaje de petrodólares.</p></article>
+    <article class="card role" onclick="alert('ONU: estuvo vinculada al contexto político de la crisis, especialmente por la Guerra de Yom Kipur que antecedió al embargo.')"><h3>ONU</h3><p>Contexto político internacional.</p></article>
+  </div>
+  <div class="callout">El Eje 1 señala que el sistema financiero internacional está compuesto por bancos centrales, organizaciones supranacionales y entidades financieras, y que canaliza recursos entre ahorro e inversión.</div>
+</section>
+
+<section class="slide">
+  <div class="section-head">
+    <div>
+      <h2>Indicadores económicos</h2>
+      <p class="subtitle">Los cambios más relevantes muestran cómo un shock energético se transmitió a toda la economía.</p>
+    </div>
+  </div>
+  <div class="grid">
+    <article class="card"><h3>Inflación</h3><div class="stat">2 dígitos</div><p>En la segunda mitad de 1973 la inflación en los países industriales llegó a niveles de dos dígitos, según el material de trabajo.</p></article>
+    <article class="card"><h3>Precio del petróleo</h3><div class="stat">≈ $3 → $12</div><p>El precio del barril se cuadruplicó de golpe, elevando los costos energéticos y productivos.</p></article>
+    <article class="card"><h3>Producción</h3><div class="stat">1974–75</div><p>Los países industriales experimentaron una fuerte caída de la producción durante la recesión internacional.</p></article>
+    <article class="card"><h3>Desempleo</h3><div class="stat">↑</div><p>El deterioro de la producción afectó los mercados laborales; el promedio de desempleo de 1974–1976 fue aproximadamente 1 punto porcentual superior al de 1971–1973.</p></article>
+  </div>
+  <div class="chart" aria-label="Representación visual del aumento del precio del petróleo">
+    <div class="bar-wrap"><div class="bar" style="height:55px"></div><div class="bar-label">Antes<br>≈ US$3</div></div>
+    <div class="bar-wrap"><div class="bar" style="height:220px"></div><div class="bar-label">Después<br>≈ US$12</div></div>
+  </div>
+  <div class="callout"><strong>Justificación:</strong> el petróleo era un insumo esencial para transporte y producción. Su encarecimiento elevó costos, precios y déficits de los países importadores, al tiempo que debilitó producción y consumo.</div>
+</section>
+
+<section class="slide">
+  <div class="section-head">
+    <div>
+      <h2>Impactos y consecuencias</h2>
+      <p class="subtitle">La crisis energética se convirtió en un fenómeno comercial, financiero y macroeconómico.</p>
+    </div>
+  </div>
+  <div class="grid">
+    <article class="card"><h3>Comercio internacional</h3><ul><li>Mayor costo de las importaciones de petróleo.</li><li>Aumento de costos de transporte y producción.</li><li>Incremento de precios de mercancías.</li><li>Déficits comerciales en países importadores.</li></ul></article>
+    <article class="card"><h3>Sistema financiero</h3><ul><li>Acumulación de petrodólares en países exportadores.</li><li>Depósitos en bancos de EE. UU. y Europa.</li><li>Expansión del crédito a países en desarrollo.</li><li>Mayor endeudamiento externo.</li></ul></article>
+    <article class="card"><h3>Consecuencias económicas</h3><ul><li>Inflación elevada.</li><li>Recesión 1974–1975.</li><li>Estanflación.</li><li>Aumento del desempleo.</li><li>Déficits de balanza de pagos.</li></ul></article>
+    <article class="card"><h3>Efectos posteriores</h3><ul><li>Mayor búsqueda de eficiencia energética.</li><li>Desarrollo de fuentes alternativas.</li><li>Crecimiento de la deuda de países en desarrollo.</li><li>Contribución a problemas de deuda de los años 80.</li></ul></article>
+  </div>
+  <div class="callout"><strong>Conclusión:</strong> la crisis mostró la interdependencia entre energía, comercio y finanzas internacionales. Los petrodólares se reciclaron mediante el sistema bancario y ayudaron a ampliar el crédito internacional.</div>
+  <div class="card refs">
+    <h3>Referencias</h3>
+    <p>Fondo Monetario Internacional. (2022). <i>El FMI: datos básicos</i>.</p>
+    <p>Ospina Pava, J. (2022). <i>Sistema financiero internacional: Eje 1 – Conceptualicemos</i>. Fundación Universitaria del Área Andina.</p>
+    <p>Historia del Departamento de Estado de Estados Unidos. (s. f.). <i>Oil Embargo, 1973–1974</i>.</p>
+    <p>Material de investigación del equipo. (s. f.). <i>Crisis del petróleo de 1973</i>.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <strong>Presentación digital · Crisis del Petróleo de 1973</strong><br>
+  Sistema Financiero Internacional · Eje 1
+</footer>
+
+<script>
+function go(n){
+  const slides=document.querySelectorAll('.slide');
+  const buttons=document.querySelectorAll('nav button');
+  slides.forEach((s,i)=>s.classList.toggle('active',i===n));
+  buttons.forEach((b,i)=>b.classList.toggle('active',i===n));
+  document.getElementById('presentacion').scrollIntoView({behavior:'smooth',block:'start'});
+}
+</script>
 </body>
 </html>

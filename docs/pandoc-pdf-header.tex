@@ -1,0 +1,7 @@
+% Sin prefijo automático "1." en títulos (el número del enunciado va en el propio encabezado).
+\setcounter{secnumdepth}{-1}
+% Figuras donde aparecen en el Markdown (evita acumulación al final del PDF).
+\usepackage{float}
+\let\oldfigure\figure
+\let\endoldfigure\endfigure
+\renewenvironment{figure}{\oldfigure[H]}{\endoldfigure}

@@ -1,21 +1,26 @@
-# AA2 — Línea base software de restaurante (SIGR)
-
-> **Uso del documento:** borrador para generar el PDF `Taller_LineaBase_SIGR.pdf` (Pandoc, Word o imprimir desde el visor). Imágenes en `docs/assets/`. En el programa la actividad puede figurar como “Taller grupal”; este entregable corresponde a **un integrante** y cita los **elementos del enunciado AA2** (secciones 1 a 4.7) para alinear con la rúbrica.
-
----
-
-## 1. Portada *(reproducir en la primera página del PDF con formato de portada)*
-
-| Campo | Contenido |
-|--------|-----------|
-| **Título del taller** | AA2 — Línea base software de restaurante (SIGR) |
-| **Integrante** | David Alejandro Osorio Martínez |
-| **Nombre del curso** | Gestión del software |
-| **Programa** | Ingeniería de software |
-| **Unidad** | 2 — Gestión de la configuración |
-| **Actividad** | AA2 |
-| **Fecha de entrega** | 30/04/2026 |
-| **Tutor** | Carlos Carrascal Avendaño |
+```{=latex}
+\begin{titlepage}
+\thispagestyle{empty}
+\centering
+\vspace*{2.8cm}
+{\LARGE\bfseries AA2 --- Línea base software de restaurante (SIGR)\par}
+\vspace{1.1cm}
+{\large Entregable individual\par}
+\vspace{2.6cm}
+{\large David Alejandro Osorio Martínez\par}
+\vspace{0.85cm}
+{\normalsize Gestión del software\par}
+{\normalsize Ingeniería de software\par}
+\vspace{0.5cm}
+{\normalsize Unidad 2 --- Gestión de la configuración\par}
+\vfill
+{\normalsize Tutor: Carlos Carrascal Avendaño\par}
+\vspace{0.6cm}
+{\normalsize Fecha de entrega: 30/04/2026\par}
+\vspace{2.4cm}
+\end{titlepage}
+\clearpage
+```
 
 ---
 
@@ -36,33 +41,31 @@ Documentar el **primer hito de estabilidad** del SIGR en términos funcionales y
 ### 4.1. Descripción del proyecto
 
 - **Nombre del sistema:** SIGR — Sistema integral de gestión de restaurante.
-- **Descripción breve:** aplicación web para gestionar pedidos, reservas, administración de menús, control de caja y generación de reportes. En esta línea base el alcance **implementado** es un prototipo de pedidos en cliente; el resto del alcance funcional queda definido para evolución futura.
+- **Descripción breve:** aplicación web para gestionar pedidos, reservas, administración de menús, control de caja y generación de reportes. En esta línea base el **front** implementa los módulos anunciados como **prototipo local** (sin servidor ni base de datos): persistencia únicamente en `localStorage`. Despliegue de demostración: [https://sigr.onrender.com/](https://sigr.onrender.com/).
 
 ### 4.2. Componentes incluidos en la línea base
 
-**Incluidos en el código y la documentación de este hito**
+**Implementados en `front/` (JavaScript vanilla, datos en `localStorage`)**
 
-- **Pedidos (prototipo):** aplicación estática en `front/` (HTML, CSS, JavaScript): menú por categorías, búsqueda, carrito en modal, checkout (mesa o domicilio), resumen y persistencia en `localStorage`. Despliegue público en Render: [https://sigr.onrender.com/](https://sigr.onrender.com/).
+- **Autenticación (demo):** sesión con nombre y rol — *cliente*, *mesero* o *administrador* — sin contraseña ni servidor; sirve para contextualizar el uso del sistema.
+- **Menú digital con CRUD:** alta, edición, borrado y categorías de platos; menú semilla restorable; imágenes por URL.
+- **Pedidos y seguimiento:** flujo de pedido (carrito, checkout) y vista **Pedidos en vivo** con estados *pendiente → en preparación → listo → entregado*; actualización manual (botón *Actualizar*), sin WebSocket.
+- **Reservas:** formulario por fecha, hora y comensales; listado y eliminación local.
+- **Cierre de caja y reportes:** total de pedidos confirmados por día calendario; registro de **cierres** como instantáneas en almacenamiento local.
 
-**Definidos como alcance del SIGR para fases posteriores** *(no implementados en esta línea base)*
+**Pendiente de una fase con backend** *(fuera de este hito)*
 
-- Módulo de **autenticación** de usuarios (clientes, meseros, administrador).
-- Módulo de **menú digital** con CRUD de platos y categorías en servidor.
-- Módulo de **registro y seguimiento de pedidos** con backend y tiempo real.
-- Módulo de **reservas** por fecha y hora.
-- Módulo de **cierre de caja** y **reportes** de ventas diarios.
+- Autenticación segura, menú y pedidos multiusuario, reservas concurrentes, caja auditada en servidor y facturación electrónica.
 
 ### 4.3. Versionado del código
 
-| Concepto | Valor |
-|----------|--------|
-| **Herramienta** | Git |
-| **Repositorio oficial** | https://github.com/BraulioOsorio/sigr |
-| **Rama principal estable** | `main` |
-| **Commit inicial** | `01e971a72995c86a5dd03305efe145d91d26593f` — *Initial commit* |
-| **Documentación e imágenes del taller** | `77c01bcecff75bd7680eed7225e7605866674b06` — *Documentacion inicial* |
-| **Front de pedidos y README** | `8974a804216942e7dc129f5d3936247365efe9ae` — *Front inicial* |
-| **Documentación AA2 y despliegue** | Serie de commits hasta el **HEAD** de `main` (p. ej. inclusión de Render, `CHANGELOG`, ajustes del informe); comprobar con `git log -1 --oneline` en el clon actualizado. |
+- **Herramienta:** Git.
+- **Repositorio oficial:** [https://github.com/BraulioOsorio/sigr](https://github.com/BraulioOsorio/sigr).
+- **Rama principal estable:** `main`.
+- **Commit inicial:** `01e971a72995c86a5dd03305efe145d91d26593f` — *Initial commit*.
+- **Documentación e imágenes del taller:** `77c01bcecff75bd7680eed7225e7605866674b06` — *Documentacion inicial*.
+- **Front de pedidos y README:** `8974a804216942e7dc129f5d3936247365efe9ae` — *Front inicial*.
+- **Documentación AA2 y despliegue:** serie de commits hasta el **HEAD** de `main` en el momento del informe (por ejemplo inclusión de Render y `CHANGELOG`); conviene comprobar con `git log -1 --oneline` en el clon actualizado.
 
 La línea base abarca el historial desde el commit inicial hasta el **HEAD** actual de `main` en GitHub.
 
@@ -118,36 +121,22 @@ Repositorio: `BraulioOsorio/sigr`, rama `main`. **Root directory:** `front` (par
 
 ### 4.5. Herramientas de soporte
 
-| Herramienta | Uso en esta línea base |
-|-------------|-------------------------|
-| **Git** | Control de versiones local; commits y rama `main`. |
-| **GitHub** | Repositorio remoto `BraulioOsorio/sigr`, clonado y `push` documentados. |
-| **Render** | Sitio estático público del front: [https://sigr.onrender.com/](https://sigr.onrender.com/). |
-| **GitHub Issues** | No activado en este hito; queda disponible para seguimiento de mejoras e incidencias en iteraciones posteriores. |
-| **Jenkins** | No utilizado en esta línea base *(opcional según guía docente; reservado para integración continua futura)*. |
+- **Git:** control de versiones local; commits y rama `main`.
+- **GitHub:** repositorio remoto `BraulioOsorio/sigr`, clonado y `push` documentados.
+- **Render:** sitio estático público del front: [https://sigr.onrender.com/](https://sigr.onrender.com/).
+- **GitHub Issues:** no activado en este hito; queda disponible para seguimiento de mejoras e incidencias en iteraciones posteriores.
+- **Jenkins:** no utilizado en esta línea base *(opcional según guía docente; reservado para integración continua futura)*.
 
 ### 4.6. Documentación asociada
 
-| Artefacto | Estado |
-|-----------|--------|
-| `README.md` | Incluido — clonado, estructura, ejecución del front, URL Render, créditos de imágenes. |
-| `CHANGELOG.md` | Incluido — historial hasta la línea base `0.1.0` y commits relevantes. |
-| `LICENSE` y `LICENSE.txt` | MIT — mismo texto. |
-| `docs/DEPLOY.md` | Despliegue local y Render. |
-| `docs/DATABASE.md` | Persistencia actual y entidades previstas. |
+- **`README.md`:** incluido — clonado, estructura, ejecución del front, URL Render, créditos de imágenes.
+- **`CHANGELOG.md`:** incluido — historial hasta la línea base `0.1.0` y commits relevantes.
+- **`LICENSE` y `LICENSE.txt`:** MIT — mismo texto.
+- **`docs/DEPLOY.md`:** despliegue local y Render.
+- **`docs/DATABASE.md`:** persistencia actual y entidades previstas.
 
 ### 4.7. Validación y aprobación de la línea base
 
-| Campo | Valor |
-|--------|--------|
-| **Fecha de creación de la línea base documentada** | 30/04/2026 |
-| **Validado por** | David Alejandro Osorio Martínez |
-| **Responsable de aprobación del entregable** | David Alejandro Osorio Martínez *(actividad presentada de forma individual)* |
+La **fecha de creación** de la línea base documentada en este informe es el **30/04/2026**.
 
----
-
-## Referencias de archivos en este entregable
-
-- Informe: `docs/Taller_LineaBase_SIGR.md`
-- Imágenes: `docs/assets/01-creacion-repositorio-github.png` … `05-render-deploy-live.png`
-- `CHANGELOG.md`, `docs/DEPLOY.md`, `docs/DATABASE.md`
+El entregable ha sido **validado por** David Alejandro Osorio Martínez. Como **responsable de aprobación** del mismo actúa también David Alejandro Osorio Martínez, en coherencia con la **presentación individual** de la actividad.

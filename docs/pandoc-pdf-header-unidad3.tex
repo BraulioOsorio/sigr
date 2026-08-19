@@ -1,0 +1,11 @@
+% Portada: Pandoc no duplique título estándar (la portada va en el .md con raw LaTeX).
+\renewcommand{\maketitle}{}
+
+% Figuras legibles y cerca del texto.
+\usepackage{graphicx}
+\setkeys{Gin}{width=\linewidth,height=0.58\textheight,keepaspectratio}
+
+\usepackage{float}
+\let\oldfigure\figure
+\let\endoldfigure\endfigure
+\renewenvironment{figure}{\oldfigure[H]}{\endoldfigure}
